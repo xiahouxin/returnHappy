@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //prototype
+      // function createCat(name) {
+      //   this.name = name;
+      // }
+      // createCat.prototype.eat = function (something) {
+      //   console.log(this.name + "吃" + something);
+      // };
+      // var catA = new createCat("xiaoA");
+      // catA.eat("鱼");
+      //js规定，访问对象的时候没有这个属性会根据原型链查找上去
+      //1.原型继承
+      //1.这种方法不支持父构造函数带参数
+      //2.会把父类的私有属性也继承过来
+      //3.A中原型上方法一旦改变,子类实例也会随之改变
+      // function A(name) {
+      //   this.name = name;
+      //   this.list = [1, 2, 3];
+      // }
+      // A.prototype.getName = function () {
+      //   console.log(this.name);
+      // };
+      // function SubA(name) {
+      //   this.subName = "sub" + this.name;
+      // }
+      // SubA.prototype = new A("zhangsan");
+      // var sa1 = new SubA("123");
+      // A.prototype.getName = function () {
+      //   console.log("666");
+      // };
+      // console.log(sa1.getName());
+
+      //2.构造函数继承
+      //父构造函数的原型没被继承过来
+      // function A(name) {
+      //   this.name = name;
+      //   this.list = [1, 2, 3];
+      // }
+      // A.prototype.getName = function () {
+      //   console.log(this.name);
+      // };
+      // function SubA(name) {
+      //   A.call(this, name);
+      //   this.subName = "sub" + this.name;
+      // }
+
+      // var sa1 = new SubA("xiaoA");
+      // console.log(sa1.name, sa1.subName);
+      // sa1.getName();
+
+      //3.组合式继承
+      //1.__proto__里的属性没用了
+      //2.执行了两次父构造函数
+      // function A(name) {
+      //   this.name = name;
+      //   this.list = [1, 2, 3];
+      // }
+      // A.prototype.getName = function () {
+      //   console.log(this.name);
+      // };
+      // function SubA(name) {
+      //   A.call(this, name);
+      //   this.subName = "sub" + this.name;
+      // }
+      // SubA.prototype = new A("");
+      // var sa1 = new SubA("xiaoA");
+      // console.log(sa1.name, sa1.subName);
+      // sa1.getName();
+      // console.log(sa1);
+
+      //4.寄生组合式继承
+      function A(name) {
+        this.name = name;
+        this.list = [1, 2, 3];
+      }
+      A.prototype.getName = function () {
+        console.log(this.name);
+      };
+      function SubA(name) {
+        A.call(this, name);
+        this.subName = "sub" + this.name;
+      }
+      SubA.prototype = Object.create(A.prototype);
+      var sa1 = new SubA("xiaoA");
+      console.log(sa1.name, sa1.subName);
+      sa1.getName();
+      console.log(sa1);
+    </script>
+  </body>
+</html>
