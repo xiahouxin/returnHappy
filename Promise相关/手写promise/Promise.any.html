@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function any(promises) {
+        let AggreError = new AggregateError("No Promise passed");
+        if (!promises.length) throw AggreError;
+        // your code here
+        let errList = [];
+        let count = 0;
+        let length = promises.length;
+        return new Promise(async (resolve, reject) => {
+          for (let i = 0; i < length; i++) {
+            Promise.resolve(promises[i])
+              .then((result) => {
+                count++;
+                resolve(result);
+              })
+              .catch((err) => {
+                errList[i] = err;
+                count++;
+                if (count == length) {
+                  reject(
+                    new AggregateError(
+                      "No Promise in Promise.any was resolved",
+                      errList
+                    )
+                  );
+                }
+              });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
