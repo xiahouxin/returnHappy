@@ -22,7 +22,7 @@
       //     });
       //   });
       // }
-      function PromiseRace(arrayList) {
+      function PromiseRace(arrayList) {      //??????
         return new Promise((resolve) => {
           for (let i = 0; i < arrayList.length; i++) {
             Promise.resolve(arrayList[i]).then((result) => {
