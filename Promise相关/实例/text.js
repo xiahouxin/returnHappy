@@ -65,6 +65,15 @@ let handleClick=async (name)=>{
     let res=await queue.excute(delay(name))
     console.log(res);
 }
+
+// let res1=await queue.excute(delay('a'))
+// console.log(res1);
+// let res2=await queue.excute(delay('b'))
+// console.log(res2);
+// let res3=await queue.excute(delay('c'))
+// console.log(res3);
+// let res4=await queue.excute(delay('d'))
+// console.log(res4);
   handleClick('A');
   handleClick('B');
   handleClick('C');
