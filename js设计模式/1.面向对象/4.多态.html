@@ -11,18 +11,20 @@
       //1.不同对象调用相同方法产生不同结果
       function Base() {
         Base.prototype.init = function () {
-          this.init();
+          console.log(`${this.name} init`);
         };
       }
       function SubA() {
-        this.init = function () {
-          console.log("subA init");
-        };
+        this.name='suba'
+        // this.init = function () {
+        //   console.log("subA init");
+        // };
       }
       function SubB() {
-        this.init = function () {
-          console.log("subB init");
-        };
+        this.name='subb'
+        // this.init = function () {
+        //   console.log("subB init");
+        // };
       }
       SubA.prototype = new Base();
       SubB.prototype = new Base();
