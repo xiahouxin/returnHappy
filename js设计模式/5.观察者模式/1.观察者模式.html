@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class EventEmit {
+        constructor() {
+          this.cache = {};
+        }
+        on(name, fn) {
+          //没有消息队列的话
+          !this.cache[name] ? (this.cache[name] = [fn]) : null;
+          //有消息队列
+          this.cache[name] && !this.cache[name].includes(fn)
+            ? this.cache[name].push(fn)
+            : null;
+          console.log(this.cache);
+        }
+        off(name, fn) {
+          let index = this.cache[name] ? this.cache[name].indexOf(fn) : null;
+          console.log(index);
+          index !== null ? this.cache[name].splice(index, 1) : null;
+          console.log(this.cache);
+        }
+        emit(name, once = false, fn) {
+          if (arguments.length >= 3) {
+            this.cache[name].includes(fn) ? fn() : null;
+          } else {
+            let length = this.cache[name] ? this.cache[name].length : 0;
+            for (let i = 0; i < length; i++) {
+              this.cache[name][i]();
+            }
+          }
+
+          if (once) {
+            arguments.length >= 3
+              ? this.off(name, fn)
+              : delete this.cache[name];
+          }
+          // console.log(this.cache);
+        }
+      }
+      let s1 = new EventEmit();
+      function createFun(say) {
+        return function () {
+          console.log(say);
+        };
+      }
+      let f1 = createFun("111");
+      let f2 = createFun("222");
+      let f3 = createFun("333");
+      s1.on("aaa", f1);
+      s1.on("aaa", f2);
+      s1.on("aaa", f3);
+      s1.emit("aaa", true, f1);
+    </script>
+  </body>
+</html>
