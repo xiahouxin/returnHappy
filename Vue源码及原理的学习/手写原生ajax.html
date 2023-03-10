@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">发送get请求</button>
+    <script>
+      var btn = document.querySelector(".btn");
+      btn.onclick = () => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("get", "http://127.0.0.1:3000/user");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status <= 300) {
+              console.log(xhr.responseText);
+            } else {
+              console.log(xhr.status);
+            }
+          }
+        };
+      };
+
+      function handleGet(url) {
+        var response = "";
+        //1.创建对象
+        var xhr = new XMLHttpRequest();
+        //2.设置方法
+        xhr.open("GET", "http://127.0.0.1:8080/user");
+        //3.发送请求
+        xhr.send();
+        //4.返回结果
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              response = xhr.responseText;
+              console.log(response, "1");
+            } else {
+              return "Error" + xhr.status;
+            }
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
