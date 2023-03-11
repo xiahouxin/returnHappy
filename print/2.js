@@ -1,7 +1,9 @@
 console.log(foo);
 
-foo()
-function foo(){
+foo(111)
+function foo(a){
+    var a=222  //用let声明就不行
+    console.log(a);
     console.log("foo");
 }
 
