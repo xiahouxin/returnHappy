@@ -46,3 +46,28 @@ export function mathBracket(str: string) {
 
 const str = "{a(b[c)]d)e}";
 console.log(mathBracket(str));
+
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s:string) {
+  let map=new Map()
+  let arr=[]
+  arr.push('?')
+  map.set('(',')').set('{','}').set('[',']')
+  for(let i=0;i<s.length;i++){
+      if(!map.has(s[i])){
+          if(map.get(arr[arr.length-1])!=s[i]){
+              return false;
+          }else{
+              arr.pop()
+          }
+      }else{
+          arr.push(s[i])
+      }
+  }
+  return arr.length==1
+};
