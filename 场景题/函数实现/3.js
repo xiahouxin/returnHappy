@@ -1,5 +1,5 @@
 /*
-    需求:一个字符串中是否出现某串字符,出现的话返回索引
+    需求:一个字符串中是否出现某串字符,出现的话返回索引 ------------string.indexOf()
     */
 ~(function () {
   function find(target) {
@@ -34,3 +34,4 @@
 
 console.log("12dasgsadgk".find("sadg"));
 console.log("12dasgsadgk".myIndex("sa"));
+console.log("12dasgsadgk".indexOf("sadg"));
