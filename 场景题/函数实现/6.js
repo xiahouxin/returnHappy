@@ -15,13 +15,20 @@
 
 
 // 2222222222222222
-for (let i = 0; i < 10; i++) {
-  setTimeout((i) => {
-    console.log(i);
-  }, 1000*i,i);
-}
+// for (var i = 0; i < 10; i++) {
+//   setTimeout((i) => {
+//     console.log(i);
+//   }, 1000*i,i);
+// }
 
 
 // 333333333333333
+for (var i = 0; i < 10; i++) {
+  (function(i){
+    setTimeout(() => {
+        console.log(i);
+      }, 1000*i);
+  })(i)
+}
 
 
