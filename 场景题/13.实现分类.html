@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 将arr转换成下面这样子
+      const arr = [
+        { a: 1, b: 2 },
+        { a: 2, b: 3 },
+        { a: 1, b: 4 },
+        { a: 2, b: 5 },
+      ];
+      // [[{ a: 1, b: 2 },{ a: 1, b: 4 }],[{ a: 2, b: 3 },{ a: 2, b: 5 }]]
+      function getName(arr) {
+        let result = [];
+        const map = new Map();
+        let index = 0;
+        for (let key of arr) {
+          if (!map.has(key.a)) {
+            map.set(key.a, index);
+            let current = [key];
+            result.push(current);
+            index++;
+          } else {
+            let suoyin = map.get(key.a);
+            result[suoyin].push(key);
+          }
+        }
+        return result;
+      }
+      console.log(getName(arr));
+    </script>
+  </body>
+</html>

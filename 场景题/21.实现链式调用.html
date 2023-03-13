@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let person = {
+        stack: [],
+        say(str) {
+          function fn() {
+            return new Promise((resolve) => {
+              resolve(console.log(str));
+            });
+          }
+          this.stack.push(fn);
+          return person;
+        },
+        sleep(time) {
+          function fn() {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                console.log("123");
+                resolve();
+              }, time * 1000);
+            });
+          }
+          this.stack.push(fn);
+          return person;
+        },
+        async done() {
+          for (let key of this.stack) {
+            await key();
+          }
+        },
+      };
+      person.say("hello").sleep(2).say("world").done();
+    </script>
+  </body>
+</html>

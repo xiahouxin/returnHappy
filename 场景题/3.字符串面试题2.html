@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+         需求:一个字符串中是否出现某串字符,出现的话返回索引
+        */
+      ~(function () {
+        function find(target) {
+          let j = 0;
+          for (let i = 0; i < this.length; i++) {
+            if (this[i] === target[j]) {
+              j++;
+              if (j == target.length) {
+                return i + 1 - target.length;
+              }
+            } else {
+              j = 0;
+            }
+          }
+          return -1;
+        }
+
+        function myIndex(o) {
+          for (let i = 0; i < this.length - o.length; i++) {
+            let j = this.substr(i, o.length);
+            if (o === j) {
+              return i;
+            }
+          }
+          return -1;
+        }
+        String.prototype.find = find;
+        String.prototype.myIndex = myIndex;
+      })();
+
+      console.log("12dasgsadgk".find("sa"));
+      console.log("12dasgsadgk".myIndex("sa"));
+    </script>
+  </body>
+</html>
