@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  这是 A 页面  -- 阿里胡
+  <iframe src="http://127.0.0.1:5500/postMessage/b.html" frameborder="0" id="frame" onload="load()"></iframe>
+
+  <script>
+    function load() {
+      let frame = document.getElementById('frame')
+      frame.contentWindow.postMessage('芳伟真滴帅', 'http://127.0.0.1:5500') // 给b页面传数据
+      window.onmessage = function(e) { // 接收b页面返回的数据
+        console.log(e.data);
+      }
+    }
+  </script>
+</body>
+</html>
