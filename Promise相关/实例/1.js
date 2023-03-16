@@ -1,11 +1,11 @@
 function red() {
-  console.log("red");
+  console.log("red",new Date().getSeconds());
 }
 function green() {
-  console.log("green");
+  console.log("green",new Date().getSeconds());
 }
 function yellow() {
-  console.log("yellow");
+  console.log("yellow",new Date().getSeconds());
 }
 function light(cb, timer) {
   return new Promise((resolve) => {

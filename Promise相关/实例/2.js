@@ -23,13 +23,13 @@ function fn() {
       setTimeout(() => {
         console.log(222);
         resolve();
-      }, 2000);
+      }, 1000);
     }).then((result) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           console.log(333);
           resolve();
-        }, 3000);
+        }, 1000);
       });
     });
   });
@@ -39,7 +39,7 @@ function fn() {
 //需求2
 async function fun() {
   const res1 = await fn();
-  console.log();
+//   console.log();
   // const res2 = await fn(res1);
   // const res3 = await fn(res2);
 }
