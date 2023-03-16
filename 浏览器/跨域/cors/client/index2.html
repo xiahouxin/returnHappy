@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复杂请求</title>
+</head>
+<body>
+  <button id="btn">发请求</button>
+
+  <script>
+    let btn = document.getElementById('btn')
+    btn.addEventListener('click', () => {
+      let xhr = new XMLHttpRequest()
+      document.cookie = 'name=wn'
+      xhr.withCredentials = true  //xhr这个请求必将去浏览器的cookie里找cookie并携带上
+      xhr.open('PUT', 'http://localhost:3000/getData', true)
+      xhr.setRequestHeader('name', 'wn')
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.response);
+        }
+      }
+      xhr.send() // 请求发送
+    })
+  </script>
+</body>
+</html>
