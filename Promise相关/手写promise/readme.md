@@ -28,8 +28,3 @@ Promise.all() 成功是是，失败是否
 Promise.race() 不是
 Promise.allSettled() 是
 Promise.any() 成功是否，失败是是
-
-作者：何方圆
-链接：https://juejin.cn/post/7042190759730085918
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
