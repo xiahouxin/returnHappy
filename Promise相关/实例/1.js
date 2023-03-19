@@ -1,44 +1,40 @@
-function red() {
-  console.log("red",new Date().getSeconds());
+function red(count) {
+  console.log(`${count}-red--${new Date().getSeconds()}`);
 }
-function green() {
-  console.log("green",new Date().getSeconds());
+function green(count) {
+  console.log(`${count}-green--${new Date().getSeconds()}`);
 }
-function yellow() {
-  console.log("yellow",new Date().getSeconds());
+function yellow(count) {
+  console.log(`${count}-yellow--${new Date().getSeconds()}`);
 }
-function light(cb, timer) {
+function light(cb, timer,count) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      cb();
-      resolve();
+      cb(count);
+      resolve(count);
     }, timer);
   });
 }
 function loop() {
-  Promise.resolve()
-    .then((res) => {
-      return light(red, 3000);
-    })
-    .then((res) => {
-      return light(green, 2000);
-    })
-    .then((res) => {
-      return light(yellow, 1000);
-    })
-    .then((res) => {
-      return loop();
-    });
+  let count = 0;
+  return function foo() {
+    count++
+    Promise.resolve(count)
+      .then((res) => {
+        return light(red, 3000,res);
+      })
+      .then((res) => {
+        return light(green, 2000,res);
+      })
+      .then((res) => {
+        return light(yellow, 1000,res);
+      })
+      .then((res) => {
+        return foo();
+      });
+  };
 }
-loop();
-
-
-
-
-
-
-
-
+loop()();
 
 // var checkPowersOfThree = function (n) {
 // 	while (n !== 0) {
