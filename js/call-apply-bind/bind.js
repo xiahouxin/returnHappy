@@ -38,8 +38,8 @@ function a(e, ee) {
   console.log(this.name);
   return e + ee
 }
-let c = a.mybind(b, 1)
-c(1, 2)
+// let c = a.mybind(b, 1)
+// c(1, 2)
 // -------------------------------------------------------终极版本
 Function.prototype.myBind=function(context){
   if (typeof this !== 'function') {
@@ -58,6 +58,7 @@ Function.prototype.myBind=function(context){
 
 }
 let bar=a.myBind(b,11)
-// let baz=new bar(12,23)
-// console.log(baz);
+// let bar=a.bind(b,11)
+let baz=new bar(12,23)
+console.log(baz);
 console.log(bar(22));
