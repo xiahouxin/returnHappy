@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function red() {
+        console.log("red");
+      }
+      function green() {
+        console.log("green");
+      }
+      function yellow() {
+        console.log("yellow");
+      }
+      const light = (callback, timer) => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            callback();
+            resolve();
+          }, timer);
+        });
+      };
+      const loop = function () {
+        Promise.resolve()
+          .then((result) => {
+            return light(red, 3000);
+          })
+          .then((result) => {
+            return light(green, 2000);
+          })
+          .then((result) => {
+            return light(yellow, 1000);
+          })
+          .then((result) => {
+            return loop();
+          });
+      };
+      loop();
+    </script>
+  </body>
+</html>
