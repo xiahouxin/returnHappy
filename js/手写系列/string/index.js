@@ -1,7 +1,7 @@
 // 字符串方法
 
 
-// // indexOf
+// // // indexOf
 // var str = "The full name of China is the People's Republic of China.";
 // var pos = str.indexOf("China");
 // console.log(pos);
@@ -33,15 +33,16 @@
 
 
 
-// // substr() 方法
-// // substr() 类似于 slice()。
-// // 不同之处在于第二个参数规定被提取部分的长度。
+// substr() 方法
+// substr() 类似于 slice()。
+// 不同之处在于第二个参数规定被提取部分的长度。
 // var str = "Apple, Banana, Mango";
 // var res = str.substr(7,6);
 // console.log(res);
 // console.log(str);
 // // 如果首个参数为负，则从字符串的结尾计算位置。
 // var res2 = str.substr(-5);
+// console.log(res2);
 
 
 
@@ -49,6 +50,7 @@
 // // replace() 方法用另一个值替换在字符串中指定的值：
 // str = "Please visit Microsoft!";
 // var n = str.replace("Microsoft", "W3School");
+// console.log(n);
 // // replace() 方法不会改变调用它的字符串。它返回的是新字符串。
 // // 默认地，replace() 只替换首个匹配：
 
@@ -59,6 +61,7 @@
 // var text1 = "Hello";
 // var text2 = "World";
 // text3 = text1.concat(" ",text2);
+// console.log(text3);
 
 
 
@@ -86,6 +89,6 @@
 // 把字符串转换为数组
 // 可以通过 split() 将字符串转换为数组：
 var txt = "a,b,c,d,e";   // 字符串
-txt.split(",");          // 用逗号分隔
-txt.split(" ");          // 用空格分隔
+// txt.split(",");          // 用逗号分隔
+// txt.split(" ");          // 用空格分隔
 console.log(txt.split("|"));          // 用竖线分隔
