@@ -26,28 +26,28 @@
 //   }
 
 
-// // 3.Object.defineProperty
-//   let _a = 1
-//   Object.defineProperty(window, 'a', {
-//     get() {
-//       return _a++
-//     }
-//   })
-  
-//   if (a == 1 && a == 2 && a == 3) {
-//     console.log('前端胖头鱼') // 前端胖头鱼
-//   }
-  
-  
-
-// 4.Proxy
-let a = new Proxy({ i: 1 }, {
-    get(target) {
-      return () => target.i++
+// 3.Object.defineProperty
+  let _a = 1
+  Object.defineProperty(window, 'a', {   //NodeJs没有window对象
+    get() {
+      return _a++
     }
   })
   
   if (a == 1 && a == 2 && a == 3) {
     console.log('前端胖头鱼') // 前端胖头鱼
   }
+  
+  
+
+// // 4.Proxy
+// let a = new Proxy({ i: 1 }, {
+//     get(target) {
+//       return () => target.i++
+//     }
+//   })
+  
+//   if (a == 1 && a == 2 && a == 3) {
+//     console.log('前端胖头鱼') // 前端胖头鱼
+//   }
   
