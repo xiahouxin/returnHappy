@@ -20,13 +20,14 @@
   window.onload = function() {
     let drag = document.getElementById('app')
     drag.onmousedown = function(e) {   //监听鼠标点下去的事件
-
+      // console.log(e,'onmousedown');
+      // console.log(drag.offsetLeft,"drag.offsetLeft");
       // 鼠标与容器边界的距离
-      let diffX = e.clientX - drag.offsetLeft
+      let diffX = e.clientX - drag.offsetLeft  //clientX是鼠标与边界的距离，offsetLeft是app容器与边界的距离
       let diffY = e.clientY - drag.offsetTop
 
       drag.onmousemove = function(event) {  //监听鼠标点下去不松的事件
-        console.log(event);
+        // console.log(event,'onmousemove');
         // 该容器应该移动的距离
         let left = event.clientX - diffX
         let top = event.clientY - diffY
@@ -45,7 +46,8 @@
         drag.style.top = top + 'px'
       }
       
-      drag.onmouseup = function() {
+      drag.onmouseup = function(ev) {
+        console.log(ev,'onmouseup');
         this.onmousemove = null
         this.onmouseup = null
       }
