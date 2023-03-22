@@ -33,7 +33,7 @@
 
 
 
-// substr() 方法
+// substr() 方法   已被弃用
 // substr() 类似于 slice()。
 // 不同之处在于第二个参数规定被提取部分的长度。
 // var str = "Apple, Banana, Mango";
@@ -72,10 +72,12 @@
 
 
 
-// // charAt() 方法
+// // charAt() 方法  如果下标超出了范围，会返回空字符串。
 // // charAt() 方法返回字符串中指定下标（位置）的字符串：
-// var str = "HELLO WORLD";
-// str.charAt(0);            // 返回 H
+var str = "HELLO WORLD";
+str.charAt(0);            // 返回 H
+console.log(str.charAt(100));
+console.log(str[100]);  //[]超出范围会返回undefined
 
 
 
@@ -88,7 +90,7 @@
 
 // 把字符串转换为数组
 // 可以通过 split() 将字符串转换为数组：
-var txt = "a,b,c,d,e";   // 字符串
-// txt.split(",");          // 用逗号分隔
-// txt.split(" ");          // 用空格分隔
-console.log(txt.split("|"));          // 用竖线分隔
+// var txt = "a,b,c,d,e";   // 字符串
+// // txt.split(",");          // 用逗号分隔
+// // txt.split(" ");          // 用空格分隔
+// console.log(txt.split("|"));          // 用竖线分隔
