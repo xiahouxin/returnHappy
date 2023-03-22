@@ -27,10 +27,10 @@
 
 // // substring() 方法
 // // substring() 类似于 slice()。
-// // 不同之处在于 substring() 无法接受负的索引。
-// var str = "Apple, Banana, Mango";
-// var res = str.substring(7,13);
-
+// // 不同之处在于 substring() 无法接受负的索引。小于 0 的开始或结束值被视为 0。
+var str = "Apple, Banana, Mango";
+var res = str.substring(7,13);
+console.log(str.substring(-13));  //等价于str.substring(0)
 
 
 // substr() 方法   已被弃用
@@ -74,10 +74,10 @@
 
 // // charAt() 方法  如果下标超出了范围，会返回空字符串。
 // // charAt() 方法返回字符串中指定下标（位置）的字符串：
-var str = "HELLO WORLD";
-str.charAt(0);            // 返回 H
-console.log(str.charAt(100));
-console.log(str[100]);  //[]超出范围会返回undefined
+// var str = "HELLO WORLD";
+// str.charAt(0);            // 返回 H
+// console.log(str.charAt(100));
+// console.log(str[100]);  //[]超出范围会返回undefined
 
 
 
