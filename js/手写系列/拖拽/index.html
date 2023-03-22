@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    #app{
+      width: 100px;
+      height: 100px;
+      background: #000;
+      cursor: pointer;
+      position: absolute;
+    }
+  </style>
+</head>
+<script>
+  window.onload = function() {
+    let drag = document.getElementById('app')
+    drag.onmousedown = function(e) {   //监听鼠标点下去的事件
+
+      // 鼠标与容器边界的距离
+      let diffX = e.clientX - drag.offsetLeft
+      let diffY = e.clientY - drag.offsetTop
+
+      drag.onmousemove = function(event) {  //监听鼠标点下去不松的事件
+        console.log(event);
+        // 该容器应该移动的距离
+        let left = event.clientX - diffX
+        let top = event.clientY - diffY
+        if (left < 0) {
+          left = 0
+        } else if (left > window.innerWidth - drag.offsetWidth) {
+          left = window.innerWidth - drag.offsetWidth
+        }
+        if (top < 0) {
+          top = 0
+        } else if (top > window.innerHeight - drag.offsetHeight) {
+          top = window.innerHeight - drag.offsetHeight
+        }
+
+        drag.style.left = left + 'px'
+        drag.style.top = top + 'px'
+      }
+      
+      drag.onmouseup = function() {
+        this.onmousemove = null
+        this.onmouseup = null
+      }
+    }
+  }
+</script>
+<body>
+  <div id="app"></div>
+</body>
+</html>
