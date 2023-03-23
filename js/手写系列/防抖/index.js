@@ -20,34 +20,34 @@
 //搜索框搜索输入。只需用户最后一次输入完，再发送请求
 //手机号、邮箱验证输入检测 onchange oninput事件
 //窗口大小Resize。只需窗口调整完成后，计算窗口大小。防止重复渲染。
-// const debounce = (fn, wait, immediate) => {
-//   let timer = null;
-//   return function (...args) {
-//     if (timer) clearTimeout(timer);
-//     console.log(timer);
-//     if (immediate && !timer) {
-//       fn.apply(this, args);
-//     }
-//     timer = setTimeout(() => {
-//       fn.apply(this, args);
-//     }, wait);
-//   };
-// };
-// const betterFn = debounce(() => console.log("fn 防抖执行了"), 1000, true);
-// document.addEventListener("scroll", betterFn);
+const debounce = (fn, wait, immediate) => {
+  let timer = null;
+  return function (...args) {
+    if (timer) clearTimeout(timer);
+    console.log(timer);
+    if (immediate && !timer) {
+      fn.apply(this, args);
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, wait);
+  };
+};
+const betterFn = debounce(() => console.log("fn 防抖执行了"), 1000, true);
+document.addEventListener("scroll", betterFn);
 
 
 
 // 防抖 - debounce 当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。
-const debounce=(fn,wait,immediate)=>{
-  let timer=null
-  return function(...args){
-    if(timer) clearTimeout(timer)
-    if(immediate&&!timer){
-      fn.apply(this,args)
-    }
-    timer=setTimeout(() => {
-      fn.apply(this,args)
-    }, wait);
-  }
-}
+// const debounce=(fn,wait,immediate)=>{
+//   let timer=null
+//   return function(...args){
+//     if(timer) clearTimeout(timer)
+//     if(immediate&&!timer){
+//       fn.apply(this,args)
+//     }
+//     timer=setTimeout(() => {
+//       fn.apply(this,args)
+//     }, wait);
+//   }
+// }
