@@ -1,5 +1,7 @@
 const arr = [ [ 'name', '蜗牛' ], [ 'age', 18 ], [ 'gender', '男' ] ]
 
+// Object.fromEntries(arr)是将数组转换成对象
+
 // console.log(Object.fromEntries(arr)); // { name: '蜗牛', age: 18, gender: '男' }
 
 

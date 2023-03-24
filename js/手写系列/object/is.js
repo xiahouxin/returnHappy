@@ -2,10 +2,14 @@
 // const b = a
 // const c = { name: '蜗牛' }
 
-// // console.log(Object.is(a, b));
-// // console.log(Object.is(a, c));
-// // console.log(Object.is(+0, +0));  //false
+// console.log(Object.is(a, b));
+// console.log(Object.is(a, c));
+// console.log(Object.is(+0, +0));  //false
 
+console.log(-0!==0);
+console.log(-0===+0);
+console.log(1/-0===1/+0);
+console.log(NaN!==NaN);
 // Object.prototype.my_is = function(x, y) {
 //   if (x === y) {
 //     return x !== 0 || 1 / x === 1 / y  //防止-0===+0
@@ -32,13 +36,13 @@
 //     }, i*1000,i);
 // } 
 
-function bar(){
-  let count=0
-  return function(){
-    console.log(count++);
-  }
-}
-let foo=bar()
-foo()
-foo()
-foo()
+// function bar(){
+//   let count=0
+//   return function(){
+//     console.log(count++);
+//   }
+// }
+// let foo=bar()
+// foo()
+// foo()
+// foo()

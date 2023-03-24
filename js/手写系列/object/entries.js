@@ -3,7 +3,7 @@ const obj = {
   age: 18,
   gender: '男'
 }
-
+// Object.entries(obj)将对象转换成键值数组
 // const res = Object.entries(obj)
 // console.log(res);
 
