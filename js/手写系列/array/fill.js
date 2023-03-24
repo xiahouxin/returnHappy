@@ -16,5 +16,5 @@ Array.prototype.my_fill = function(value, start = 0, end) {
   }
   return this
 }
-const res = singers.fill('刘德华', 1, 3)
-console.log(res);
+const res = singers.fill('刘德华', 1)
+console.log(singers);

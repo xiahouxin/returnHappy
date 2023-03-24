@@ -14,7 +14,7 @@
 // console.log(fruits);
 
 
-// // join
+// // pop
 // var fruits = ["Banana", "Orange", "Apple", "Mango"];
 // let newfruits = fruits.pop(); 
 // console.log(newfruits);

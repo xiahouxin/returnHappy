@@ -7,8 +7,8 @@ const singers = [
 ]
 
 // const item = singers.find((item, index, arr) => {
-//   // console.log(item, index, arr);
-//   return item.name === '周杰伦123'
+//   console.log(item, index);
+//   return item.name === '周杰伦'
 // })
 // console.log(item);
 

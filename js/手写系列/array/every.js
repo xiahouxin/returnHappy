@@ -6,11 +6,11 @@ const singers = [
   { name: '薛之谦', num: 543 }
 ]
 // every会遍历数组，遍历到的项必须全部满足条件才会返回true，
-// 没有写条件时返回false,当返回了第一个false之后就不在遍历
+// 没有写条件时返回false,当返回了第一个false之后就不在遍历    !!!!!!!!!!!!!!
 
 // const res = singers.every((item, index, arr) => {
 //   console.log(item);
-//   // return item.num > 400
+//   return item.num > 400
 // })
 // console.log(res);
 
