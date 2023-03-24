@@ -31,17 +31,20 @@
           return isNaN(n) ? 0 : n;
         }
         Number.prototype.add = function (num) {
-          n = changeOtherToNumber(num);
-          console.log(this instanceof Number);  
+          let n = changeOtherToNumber(num);
+          // console.log(this instanceof Number);  
+          console.log(typeof num==="number","1111111111");
           return this + n;
         };
         Number.prototype.minus = function (num) {
-          n = changeOtherToNumber(num);
-          console.log(this,'minus');
+          let n = changeOtherToNumber(num);
+          // console.log(this,'minus');
           return this - num;
         };
       })();
+      console.log(5 instanceof Number,'111');
       console.log((5).add(3).minus(2));
+      // console.log(Object.prototype.toString.call(5));
     </script>
   </body>
 </html>
