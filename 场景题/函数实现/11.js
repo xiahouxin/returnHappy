@@ -22,12 +22,13 @@ function Format(number) {
   let all = "";
   console.log(zhengshu);
   console.log(xiaoshu);
-  zhengsh.reverse().forEach((item, index) => {
+  zhengshu.reverse().forEach((item, index) => {
     if (index !== 0 && index % 3 === 0) {
       all = item + "," + all;
     } else {
       all = item + all;
     }
   });
+  return all + (xiaoshu ? "." + xiaoshu : "");
 }
 console.log(Format(1231223124.123));

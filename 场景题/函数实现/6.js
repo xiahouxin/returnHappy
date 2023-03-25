@@ -24,10 +24,10 @@
 
 // 333333333333333
 for (var i = 0; i < 10; i++) {
-  (function(i){
+  (function(j){
     setTimeout(() => {
-        console.log(i);
-      }, 1000*i);
+        console.log(j);
+      }, 1000*j);
   })(i)
 }
 
