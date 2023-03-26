@@ -24,6 +24,9 @@ new Promise(resolve => {
   .then(function () {
     console.log('promise2')
   })
+  .then(function () {
+    console.log('promise3')
+  })
 console.log('script end')
 
 // script start
