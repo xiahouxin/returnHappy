@@ -1,18 +1,21 @@
-// function getJSON() {
+// function getJSON(time) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       console.log('json');
 //       resolve('ok')
-//     }, 500)
+//     }, time)
 //   })
 // }
 
 // // async表示当前这个函数内部可以存在异步
-// async function testAsync() {
-//   await getJSON() // 加了await的代码会立即执行，且后面的代码会被阻塞
-//   console.log('数据已经拿到了');
+// let count=0
+// async function testAsync(time) {
+//   await getJSON(time) // 加了await的代码会立即执行，且后面的代码会被阻塞
+//   console.log(++count,'数据已经拿到了');
 // }
-// testAsync()
+// testAsync(5000)
+// console.log(1111);
+// testAsync(1000)
 
 
 /**
@@ -44,9 +47,9 @@ function doIt(){
   console.time('doIt');
   let time1 = 300;
   step1(time1)
-      .then((time2) => step2(time2))
-      .then((time3) => step3(time3))
-      .then((result) => {
+      .then((time2) => step2(time2))  //time2==500
+      .then((time3) => step3(time3))  //time3==700
+      .then((result) => {             //result==900
           console.log(`result is ${result}`);
           console.timeEnd("doIt");
       })
