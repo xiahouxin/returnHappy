@@ -4,7 +4,7 @@ async function async1() {
   console.log(arr);
   console.log('async1 end')
 }
-async function async2() {
+async function async2() {                      //async会影响答案
   return new Promise((resolve,reject)=>{
       console.log('async2 end')
       resolve('okk')
@@ -16,16 +16,16 @@ setTimeout(function () {
 }, 0)
 new Promise(resolve => {
   console.log('Promise')
-  resolve()
+  resolve(123)
 })
-  .then(function () {
-    console.log('promise1')
+  .then(function (res) {
+    console.log('promise1',res)  //res==123
   })
-  .then(function () {
-    console.log('promise2')
+  .then(function (res) {
+    console.log('promise2',res)  //res==undefined
   })
-  .then(function () {
-    console.log('promise3')
+  .then(function (res) {
+    console.log('promise3',res)  //res==undefined
   })
 console.log('script end')
 
