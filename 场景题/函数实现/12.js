@@ -66,3 +66,8 @@
     console.log(i);
   }
 })();
+// let count=11
+// setInterval(() => {
+//   console.log(count++);
+// }, 1000);
+console.log(11111);
