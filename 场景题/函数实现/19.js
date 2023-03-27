@@ -16,4 +16,4 @@ function sqrt(num, n) {
     }
   }
 }
-console.log(10, 0.1);
+console.log(sqrt(10, 0.1));
