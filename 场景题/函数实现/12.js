@@ -21,7 +21,7 @@
         for (let i = 0; i < 5; i++) {
          setTimeout(() => {
            console.log(new Date(), i);
-         }, 1000 * i);1
+         }, 1000 * i);
        }
        */
 
@@ -71,3 +71,30 @@
 //   console.log(count++);
 // }, 1000);
 console.log(11111);
+
+// 测试
+// let res=[1,2,3]
+// let count=4
+// for (var i = 0; i < 5; i++) {
+//   // res.push(count++)
+//   Promise.resolve(i).then((i)=>{
+//     setTimeout(() => {
+//       console.log(new Date(), i);
+//     }, 1000*i);
+//   })
+// }
+
+// (async function(){
+//   let sleep=(time)=>
+//     new Promise(resolve=>{
+//       setTimeout(resolve,time)
+//       // resolve()
+//     })
+// for (var i = 0; i < 5; i++) {
+//   await sleep(1000)
+//   console.log(i)
+// }
+// })()
+// Promise.resolve(111).then((res)=>{
+//   console.log(res);
+// })
