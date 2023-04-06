@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //=>基本数据类型
+      console.log(Object.prototype.toString.call(123));
+      console.log(Object.prototype.toString.call(true));
+      console.log(Object.prototype.toString.call(null));
+      console.log(Object.prototype.toString.call(undefined));
+      console.log(Object.prototype.toString.call("123"));
+      console.log(Object.prototype.toString.call(BigInt(123)));
+      console.log(Object.prototype.toString.call(Symbol()));
+      console.log("分割线-------------");
+      //=>复杂数据类型
+      console.log(Object.prototype.toString.call([]));
+      console.log(Object.prototype.toString.call({}));
+      console.log(Object.prototype.toString.call(Date));
+      console.log(Object.prototype.toString.call(new Date()));
+      console.log(Object.prototype.toString.call(/\d/));
+      console.log("分割线-------------");
+      //=>特例
+      -(function () {
+        console.log(Object.prototype.toString.call(arguments));
+      })(1, 2, 3);
+      console.log(Object.prototype.toString.call(document));
+    </script>
+  </body>
+</html>

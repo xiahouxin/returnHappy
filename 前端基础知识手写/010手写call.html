@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ~(function () {
+      //   function myCall(context) {
+      //     context = context || window;
+      //     if (typeof this !== "function") {
+      //       return new Error("TypeError");
+      //     }
+      //     let arg = [];
+      //     let result = null;
+      //     arg = [...arguments].slice(1);
+      //     context.fn = this;
+      //     result = context.fn(...arg);
+      //     delete context.fn;
+      //     return result;
+      //   }
+      //   Function.prototype.myCall = myCall;
+      // })();
+      Function.prototype._call = function (context) {
+        if (typeof this !== "function") {
+          throw new Error("must be a function");
+        }
+        //如果是null或undefined或不传的话默认指向window
+        context = context || window;
+        context.fn = this;
+        let result = null;
+        let args = [...arguments].slice(1);
+        result = args ? context.fn(...args) : context.fn();
+        //结束之后删除
+        delete context.fn;
+        return result;
+      };
+      var obj = {
+        n: 15,
+      };
+      function sum(n, m) {
+        console.log(this);
+        return n + m;
+      }
+
+      console.log(sum._call(null, 10, 20));
+      console.log(sum.call(null, 10, 20));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Function.prototype._Apply = function (context) {
+      //   if (typeof this !== "function") {
+      //     throw new Error("must be a function");
+      //   }
+      //   //如果是null或undefined或不传的话默认指向window
+      //   context = context || window;
+      //   context.fn = this;
+      //   let result = null;
+      //   let args = [...arguments].slice(1);
+      //   //如果传入的参数不是数组类型的则报错
+      //   if (!Array.isArray(args[0])) {
+      //     new Error("Uncaught TypeError");
+      //   }
+      //   result = args ? context.fn(...args[0]) : context.fn();
+      //   //结束之后删除
+      //   delete context.fn;
+      //   return result;
+      // };
+
+      Function.prototype._Apply = function (context) {
+        if (typeof this !== "function") {
+          throw new Error("must be a function");
+        }
+        context.fn = this;
+        let result = null;
+        let arg = [...arguments].slice(1);
+        result = context.fn(...arg);
+        delete context.fn();
+        return result;
+      };
+      let obj = {
+        a: 10,
+        b: 20,
+      };
+      function sum(a, b) {
+        this.b = 100;
+        console.log(this);
+        console.log(this.a, this.b);
+        console.log(a, b);
+      }
+      sum._Apply(undefined, [10, 20]);
+      // sum.call(undefined, 10, 20);
+    </script>
+  </body>
+</html>

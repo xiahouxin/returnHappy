@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function shallowCopy(obj) {
+      //   let result = {};
+      //   for (let key in obj) {
+      //     if (!result.hasOwnProperty(key)) {
+      //       result[key] = obj[key];
+      //     }
+      //   }
+      //   return result;
+      // }
+      function shallowCopy(obj) {
+        let result = {};
+        for (let key in obj) {
+          if (!result.hasOwnProperty(key)) {
+            result[key] = obj[key];
+          }
+        }
+        return result;
+      }
+      let m = { a: 1, b: ["name", "xxx"], c: /^g/, d: { e: 1 } };
+      n = shallowCopy(m);
+      n.b[0] = 3;
+      console.log(n);
+      console.log(m);
+    </script>
+  </body>
+</html>

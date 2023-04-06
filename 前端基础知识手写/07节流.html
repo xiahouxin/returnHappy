@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <button id="btn">点击输出内容</button>
+    <script>
+      var btn=document.querySelector('#btn')
+      btn.onclick=throttle(function(){
+        console.log(666);
+      },1000)
+
+
+
+
+    // function throttle(fn,delay){
+    //   let canRun=true
+    //   return function(){
+    //     if(!canRun) return
+    //     canRun=false
+    //     let context=this,
+    //     arg=arguments
+    //     setTimeout(()=>{
+    //       fn.apply(context,arg)
+    //       canRun=true
+    //     },delay)
+    //   }
+    // }
+
+    function throttle(fn,delay){
+      let currentTime = Date.now()
+      return function(){
+        let nowTime = Date.now()
+        let context = this
+        let arg = [...arguments]
+        if(nowTime - currentTime > delay){
+          currentTime = Date.now()
+          return fn.apply(context,arg)
+        }
+      }
+    }
+    </script>
+  </body>
+</html>

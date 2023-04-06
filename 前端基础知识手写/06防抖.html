@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击输出内容</button>
+    <script>
+      var btn = document.querySelector("#btn");
+      btn.onclick = debounce(function () {
+        console.log(111);
+      }, 1000);
+      //防抖实现
+      // function debounce(fn, delay) {
+      //   let timer;
+      //   return function () {
+      //     let context = this;
+      //     arg = [...arguments];
+      //     if (timer) {
+      //       clearTimeout(timer);
+      //       timer = null;
+      //     }
+      //     timer = setTimeout(() => {
+      //       fn.apply(context, arg);
+      //     }, delay);
+      //   };
+      // }
+      function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+          }
+          let arg = [...arguments];
+          let context = this;
+          timer = setTimeout(() => {
+            fn.apply(context, arg);
+          }, delay);
+        };
+      }
+    </script>
+  </body>
+</html>
