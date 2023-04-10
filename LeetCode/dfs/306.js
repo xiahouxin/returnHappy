@@ -11,13 +11,13 @@ function dfs(u,num,n,list) {
     let m = list.length;
     if (u == n) return m >= 3;
     let max = num.charAt(u) == '0' ? u + 1 : n;
-    let cur = [];
+    let cur = [];                                //cur代表当前数
     for (let i = u; i < max; i++) {
         cur.push(parseInt(num.charAt(i)));
-        console.log(cur,'cur');
+        // console.log(cur,'cur');
         if (m < 2 || check(list[m - 2], list[m - 1], cur)) {
             list.push(cur);
-            console.log(list,'list');
+            // console.log(list,'list');
             if (dfs(i + 1,num,n,list)) return true;
             list.pop();
         }
