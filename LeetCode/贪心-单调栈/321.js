@@ -7,7 +7,7 @@ var maxNumber = function(nums1, nums2, k) {
         const subsequence2 = MaxSubsequence(nums2, k - i);
         const curMaxSubsequence = merge(subsequence1, subsequence2);
         if (compare(curMaxSubsequence, 0, maxSubsequence, 0) > 0) {
-            maxSubsequence.splice(0, k, ...curMaxSubsequence);
+            maxSubsequence.splice(0, k, ...curMaxSubsequence);  //把maxSubsequence里面的值全部换成curMaxSubsequence里面的值
         }
     }
     return maxSubsequence;
