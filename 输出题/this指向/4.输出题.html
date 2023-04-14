@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.重要
+      /*
+            var obj = {
+              say: function () {
+                var f1 = () => {
+                  console.log("1111", this);
+                };
+                f1();
+              },
+              pro: {
+                getPro: () => {
+                  console.log(this);
+                },
+              },
+            };
+            var o = obj.say;
+            o();
+            obj.say();
+            obj.pro.getPro();
+            */
+
+      //2.
+      /*
+            var myObject = {
+              foo: "bar",
+              func: function () {
+                var self = this;
+                console.log(this.foo);
+                console.log(self.foo);
+                (function () {
+                  console.log(this.foo);
+                  console.log(self.foo);
+                })();
+              },
+            };
+            myObject.func();
+            */
+
+      //3.
+      /* window.number = 2;
+      var obj = {
+        number: 3,
+        db1: (function () {
+          console.log(this);
+          this.number *= 4;
+          return function () {
+            console.log(this);
+            this.number *= 5;
+          };
+        })(),
+      };
+      var db1 = obj.db1; //=>window 8
+      db1(); //=>window 40
+      obj.db1(); //=>15
+      console.log(obj.number); // 15
+      console.log(window.number); // 40
+ */
+      //4.
+      // var length = 10;
+      // function fn() {
+      //   console.log(this.length);
+      // }
+      // var obj = {
+      //   length: 5,
+      //   method: function (fn) {
+      //     fn();
+      //     arguments[0]();
+      //   },
+      // };
+
+      // obj.method(fn, 1);
+
+      //5.
+    </script>
+  </body>
+</html>
