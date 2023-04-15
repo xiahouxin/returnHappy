@@ -9,60 +9,57 @@
   <body>
     <script>
       //1.
-      /*
-            function foo() {
-              console.log(this.a);
-            }
-            function doFoo() {
-              foo();
-            }
-            var obj = {
-              a: 1,
-              doFoo: doFoo,
-            };
-            var a = 2;
-            obj.doFoo();
-            */
+   
+            // function foo() {
+            //   console.log(this.a);
+            // }
+            // function doFoo() {
+            //   foo();
+            // }
+            // var obj = {
+            //   a: 1,
+            //   doFoo: doFoo,
+            // };
+            // var a = 2;
+            // obj.doFoo();  //2
+           
 
       //2.注意箭头函数
-      /*
-      var a = 10;
-      var obj = {
-        a: 20,
-        say: () => {
-          console.log(this.a);
-        },
-      };
-      obj.say();
+      // var a = 10;
+      // var obj = {
+      //   a: 20,
+      //   say: () => {
+      //     console.log(this.a);
+      //   },
+      // };
+      // obj.say();  //10
 
-      var anotherObj = { a: 30 };
-      obj.say.apply(anotherObj); 
-      */
+      // var anotherObj = { a: 30 };
+      // obj.say.apply(anotherObj);   //10
+      
 
       //3.非箭头函数的情况
-      /* 
-      var a = 10;
-      var obj = {
-        a: 20,
-        say() {
-          console.log(this.a);
-        },
-      };
-      obj.say();
-      var anotherObj = { a: 30 };
-      obj.say.apply(anotherObj); 
-      */
+      // var a = 10;
+      // var obj = {
+      //   a: 20,
+      //   say() {
+      //     console.log(this.a);
+      //   },
+      // };
+      // obj.say();  //20
+      // var anotherObj = { a: 30 };
+      // obj.say.apply(anotherObj);   //30
 
+    
       //4.
-      /* 
-      function a() {
-        console.log(this);
-      }
-      a.call(null); 
-      */
+      // function a() {
+      //   console.log(this);
+      // }
+      // a.call(null); //window
+      // a.call();   //window
+
 
       //5.
-      /* 
       var obj = {
         name: "cuggz",
         fun: function () {
@@ -70,8 +67,8 @@
         },
       };
       obj.fun(); // cuggz
-      new obj.fun(); // undefined 
-      */
+      let brr = new obj.fun(); // undefined 
+      console.log(brr)  //fun{}
     </script>
   </body>
 </html>
