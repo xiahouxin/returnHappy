@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(1);
+      setTimeout(() => {
+        console.log(2);
+      }, 1000);
+      async function fn() {
+        console.log(3);
+        setTimeout(() => {
+          console.log(4);
+        }, 20);
+        return Promise.reject();
+      }
+      async function run() {
+        console.log(5);
+        await fn();
+        console.log(6);
+      }
+      run();
+      //for循环执行约150ms
+      for (let i = 0; i < 90000000; i++) {}
+      setTimeout(() => {
+        console.log(7);
+        new Promise((resolve) => {
+          console.log(8);
+          resolve();
+        }).then(() => {
+          console.log(9);
+        });
+      }, 0);
+      console.log(10);
+
+      /* 
+      1
+      5
+      3
+      10
+      4
+      7
+      8
+      9
+      2
+
+       */
+    </script>
+  </body>
+</html>
