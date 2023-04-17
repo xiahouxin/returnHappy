@@ -7,7 +7,7 @@ async function async1() {
 async function async2() {
   console.log("async2 end");
 }
-async1();
+async1()
 setTimeout(function () {
   console.log("setTimeout");
 }, 0);
@@ -21,6 +21,7 @@ new Promise((resolve) => {
   .then(function () {
     console.log("promise2");
   });
+// async1();
 console.log("script end");
 
 // script start
