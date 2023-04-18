@@ -1,40 +1,38 @@
 //输出题1
-/*  
-      (function () {
-        var x = (y = 1);
-        })();
-        var z;
-        console.log(y); // 1
-        console.log(z); // undefined
-        console.log(x); // Uncaught ReferenceError: x is not defined
-      */
+
+// (function () {
+//   var x = (y = 1);
+// })();
+// var z;
+// console.log(y); // 1
+// console.log(z); // undefined
+// console.log(x); // Uncaught ReferenceError: x is not defined
+
 
 //输出题2
-/* 
-      var a, b;
-      (function () {
-        console.log(a);
-        console.log(b);
-        var a = (b = 3);
-        console.log(a);
-        console.log(b);
-      })();
-      console.log(a);
-      console.log(b); 
-      */
+// var a, b;
+// (function () {
+//   console.log(a);
+//   console.log(b);
+//   var a = (b = 3);
+//   console.log(a);
+//   console.log(b);
+// })();
+// console.log(a);
+// console.log(b);
 
 //输出题3
-/*
-       var friendName = "World";
-      (function () {
-        if (typeof friendName === "undefined") {
-          var friendName = "Jack";
-          console.log("Goodbye " + friendName);
-        } else {
-          console.log("Hello " + friendName);
-        }
-      })(); 
-      */
+// var friendName = "World";
+// (function () {
+//   if (typeof friendName === "undefined") {
+//     var friendName = "Jack";
+//     console.log("Goodbye " + friendName);
+//   } else {
+//     console.log("Hello " + friendName);
+//   }
+//   console.log(friendName);
+// })();
+
 
 //输出题4
 /*
