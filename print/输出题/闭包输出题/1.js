@@ -35,34 +35,33 @@
 
 
 //输出题4
-/*
-       function fn1() {
-        console.log("fn1");
-      }
-      var fn2;
-      fn1();
-      fn2();
-      fn2 = function () {
-        console.log("fn2");
-      };
-      fn2();
-       */
+// function fn1() {
+//   console.log("fn1");
+// }
+// var fn2;
+// fn1();
+// fn2();
+// function fn2() {
+//   console.log("fn2");
+// };
+fn2();
+
 
 //输出题5
-/*  function a() {
-        var temp = 10;
-        function b() {
-          console.log(temp); // 10
-        }
-        b();
-      }
-      a();
-      function a() {
-        var temp = 10;
-        b();
-      }
-      function b() {
-        console.log(temp); // 报错 Uncaught ReferenceError: temp is not defined
-      }
-      a(); 
-      */
+function a() {
+  var temp = 10;
+  function b() {
+    console.log(temp); // 10
+  }
+  b();
+}
+a();
+function a() {
+  var temp = 10;
+  b();
+}
+function b() {
+  console.log(temp); // 报错 Uncaught ReferenceError: temp is not defined
+}
+a();
+
