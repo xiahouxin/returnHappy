@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Box-sizing</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .test {
+        /* border: 20px solid black; */
+        /* width: 300px;
+        height: 300px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center; */
+        /*
+      简写的姿势排序
+      @keyframes name : 动画名
+      duration 持续时间
+      timing-function 动画频率
+      delay 延迟多久开始
+      iteration-count 循环次数
+      direction 动画方式,往返还是正向
+      fill-mode  一般用来处理停留在某一帧
+      play-state running 开始,paused 暂停 ,.
+       更多的参数去查文档吧..我就不一一列举了
+      */
+        /* animation: rotate 6s linear infinite; */
+      }
+      /* animation: moveChangeColor ease-in 2.5s 1 forwards running; */
+      /* animation-fill-mode: forwards; */
+      .img {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+        border-radius: 150px;
+        border-radius: 10px solid #ccc;
+        text-align: center;
+        line-height: 300px;
+        animation: rotate 6s linear infinite;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .pause {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+
+  <body> 
+    </div>
+  </body>
+  <script>
+    var img = document.querySelector(".img");
+    var test = document.querySelector(".test");
+    img.onclick = function () {
+      console.log(img.className.length);
+      img.className.length <= 3
+        ? (img.className = "img pause")
+        : (img.className = "img");
+    };
+
+
+
+
+
+    
+  </script>
+</html>

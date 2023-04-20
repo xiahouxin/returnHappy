@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise库</title>
+  </head>
+  <body>
+    <script>
+      /*
+        支持的功能
+        1、全局默认配置项
+        2、发送请求_ajax.get/post
+        3、每一次请求都会返回PROMISE实例,基于PROMISE设计模式进行管理
+        4、支持_ajax.all
+      */
+
+      ~(function () {
+        //=>发送AJAX请求,且基于PROMISE进行管理
+        class MyAjax {
+          constructor(url, option) {
+            this.url = url;
+            this.option = options;
+            return this.init();
+          }
+          //发送AJAX请求(基于PROMISE管理)
+          init() {
+            let {
+              url,
+              options: {
+                baseURL,
+                withCredentials,
+                headers,
+                transformRequest,
+                validataeStatus,
+                params,
+                data,
+                cache,
+                method,
+              },
+            } = this;
+            return new Promise((resolve, reject) => {
+              let xhr = new XMLHttpRequest();
+              //对URl进行处理
+              url = baseURL + url;
+              if (/^(GET|DELETE|HEAD|OPTIONS)$/i.test(method)) {
+                if (params) {
+                  let result = ``;
+                  for (let key in params) {
+                    if (!data.hasOwnProperty(key)) break;
+                    str += `&${key}=${params[key]}`;
+                  }
+                  result = str.substring(1);
+                  url += `${url.indexOf("?") === -1 ? "?" : "&"}${result}`;
+                }
+                if (cache === false) {
+                  url += `${
+                    url.indexOf("?") === -1 ? "?" : "&"
+                  }_=${Math.random()}`;
+                }
+              }
+              xhr.open(method, url);
+              xhr.onreadystatechange = () => {
+                let resultFlag = validataeStatus(xhr.status);
+                if (!resultFlag) {
+                  reject({
+                    status: xhr.status,
+                    statsuText: xhr.statusText,
+                    request: xhr,
+                  });
+                  return;
+                }
+                if (xhr.readyState === 4) {
+                  resolve({
+                    status: xhr.status,
+                    statsuText: xhr.statusText,
+                    request: xhr,
+                    data: JSON.parse(xhr.responseText),
+                    headers: xhr.getAllResponseHeaders(),
+                  });
+                }
+              };
+              //=>请求拦截器:请求主体传递信息的拦截
+              if (/^(POST|PUT)$/i.test(method)) {
+                if (typeof transformRequest === "function") {
+                  data = transformRequest(data);
+                }
+              } else {
+                data = null;
+              }
+              xhr.send(data);
+            });
+          }
+        }
+        //默认配置项
+        _ajax.default = {
+          baseURL: "",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          transformRequest: function (data) {
+            if (!data) return data;
+            let str = ``;
+            for (let key in data) {
+              if (!data.hasOwnProperty(key)) break;
+              str += `&${key}=${data[key]}`;
+            }
+            return str.substring(1);
+          },
+          validataeStatus: function () {},
+          //=>请求配置项
+          params: {},
+          data: {},
+          cache: true,
+        };
+
+        //=>创建_ajax管理调用
+        function _init(options = {}) {
+          //合并参数
+          let optionsHeaders = options.headers;
+          _ajax.defaults.headers = Object.assign(
+            _ajax.default.headers,
+            optionsHeaders
+          );
+          delete options.headers;
+          return Object.assign(_ajax.defaults, options);
+        }
+        function _ajax() {}
+
+        ["get", "delete", "head", "options"].forEach((item) => {
+          _ajax[item] = function anonymous(url, options = {}) {
+            options.method = item;
+            return new MyAjax(url, _init(options));
+          };
+        });
+        ["post", "put"].forEach((item) => {
+          _ajax[item] = function anonymous(url, data = {}, options = {}) {
+            options.method = item;
+            //=>把data放到配置项目
+            options.data = data;
+            return new MyAjax(url, _init(options));
+          };
+        });
+
+        _ajax.all = function (promiseArr = []) {
+          return Promise.all(promiseArr);
+        };
+        window._ajax = _ajax;
+      })();
+
+      //使用
+      _ajax
+        .all([Promise.resolve(100), Promise.resolve(200)])
+        .then((results) => {
+          console.log(results);
+        });
+
+      console.dir(_ajax);
+    </script>
+  </body>
+</html>
