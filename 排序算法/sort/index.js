@@ -34,6 +34,8 @@ const sortArray = function (nums) {
 };
 
 const quickSort = function (nums, left, right) {
+  left = left ? left : 0
+  right = right ? right : nums.length
   // 小区间使用插入排序
   if (right - left <= INSERTION_SORT_THRESHOLD) {
     insertionSort(nums, left, right);
@@ -97,4 +99,5 @@ const swap = function (nums, index1, index2) {
 // console.log(Math.random());
 // console.log(Math.floor(Math.random()*8));
 let nums = [1, 8, 6, 9, 12, 2, 4, 8, 5, 4, 6, 3, 23, 5];
-console.log(sortArray(nums));
+quickSort(nums)
+console.log(nums);
