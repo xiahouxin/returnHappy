@@ -12,8 +12,8 @@
  */
 
 // 方法一：深度优先搜索
-var maxDepth = function(root) {
-    if(root == null) {
+var maxDepth = function (root) {
+    if (root == null) {
         return 0;
     } else {
         let left = maxDepth(root.left);
