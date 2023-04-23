@@ -11,6 +11,7 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
+// 以下是二叉树的左节点<根节点<右节点--------------------------------
 // 递归
 var lowestCommonAncestor = function (root, p, q) {
     if (root.val < p.val && root.val < q.val)
@@ -36,3 +37,7 @@ function lowestCommonAncestor( root,  p,  q) {
     }
     return root;
 }
+
+
+
+// // 以下是二叉树节点没有大小之分--------------------------------
