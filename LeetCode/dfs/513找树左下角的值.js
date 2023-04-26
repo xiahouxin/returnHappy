@@ -19,6 +19,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
+// dfs
 var findBottomLeftValue = function(root) {
     let maxPath=0,resultVal=null
     const dfsTree=function(node,curPath){
@@ -34,4 +35,22 @@ var findBottomLeftValue = function(root) {
     }
     dfsTree(root,1)
     return resultVal
+};
+
+
+// bfs
+var findBottomLeftValue = function(root) {
+    let ret = 0;
+    const queue = [root];
+    while (queue.length) {
+        const p = queue.shift();
+        if (p.right) {
+            queue.push(p.right);
+        }
+        if (p.left) {
+            queue.push(p.left);
+        }
+        ret = p.val;
+    }
+    return ret;
 };
