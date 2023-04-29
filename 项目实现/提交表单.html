@@ -1,163 +1,69 @@
-<form
-  action="/RTWeb/ReviewThesis/add"
-  oncontextmenu="TotalScore.value = 0"
+<form action="/RTWeb/ReviewThesis/add" oncontextmenu="TotalScore.value = 0"
   oninput="TotalScore.value = 0 + parseInt(ScoreTopic.value) + parseInt(ScoreSurvey.value) + parseInt(ScoreWandL.value) + parseInt(AchievementInnovation.value) + parseInt(TheoryAnalysis.value) + parseInt(Practice.value)"
-  method="get"
->
+  method="get">
   <div class="field">
-    评阅记录:<input
-      type="text"
-      name="RecordID"
-      class="RecordID"
-      maxlength="10"
-    /><br />
+    评阅记录:<input type="text" name="RecordID" class="RecordID" maxlength="10" /><br />
   </div>
   <div class="field">
-    论文编号:<input
-      type="text"
-      name="ThesisID"
-      class="ThesisID"
-      maxlength="10"
-    /><br />
+    论文编号:<input type="text" name="ThesisID" class="ThesisID" maxlength="10" /><br />
   </div>
   <div class="field">
-    论文题目:<input
-      type="text"
-      name="ThesisTitle"
-      class="ThesisTitle"
-      maxlength="60"
-    /><br />
+    论文题目:<input type="text" name="ThesisTitle" class="ThesisTitle" maxlength="60" /><br />
   </div>
   <div class="field">
-    评阅人:<input
-      type="text"
-      name="Reviewer"
-      class="Reviewer"
-      maxlength="30"
-    /><br />
+    评阅人:<input type="text" name="Reviewer" class="Reviewer" maxlength="30" /><br />
   </div>
   <div class="field">
-    评阅人职称:<input
-      type="text"
-      name="TechTitle"
-      class="TechTitle"
-      maxlength="20"
-    /><br />
+    评阅人职称:<input type="text" name="TechTitle" class="TechTitle" maxlength="20" /><br />
   </div>
   <div class="field">
-    评阅人单位:<input
-      type="text"
-      name="ReviewerOrg"
-      class="ReviewerOrg"
-      maxlength="60"
-    /><br />
+    评阅人单位:<input type="text" name="ReviewerOrg" class="ReviewerOrg" maxlength="60" /><br />
   </div>
   <div class="field">
-    评阅人电话:<input
-      type="text"
-      name="Phone"
-      class="Phone"
-      maxlength="20"
-    /><br />
+    评阅人电话:<input type="text" name="Phone" class="Phone" maxlength="20" /><br />
   </div>
   <div class="field">
-    是否博导:<input
-      type="radio"
-      name="IsDocyorTutor"
-      class="IsDocyorTutor"
-      value="1"
-    />是<input type="radio" name="IsDocyorTutor" value="0" />否<br />
+    是否博导:<input type="radio" name="IsDocyorTutor" class="IsDocyorTutor" value="1" />是<input type="radio"
+      name="IsDocyorTutor" value="0" />否<br />
   </div>
   <div class="field">
-    选题得分:<input
-      type="number"
-      name="ScoreTopic"
-      class="ScoreTopic"
-      value="0"
-      oninput="if(value>10)value=10;if(value<0)value=0"
-    /><br />
+    选题得分:<input type="number" name="ScoreTopic" class="ScoreTopic" value="0"
+      oninput="if(value>10)value=10;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    文献综述:<input
-      type="number"
-      name="ScoreSurvey"
-      class="ScoreSurvey"
-      value="0"
-      oninput="if(value>10)value=10;if(value<0)value=0"
-    /><br />
+    文献综述:<input type="number" name="ScoreSurvey" class="ScoreSurvey" value="0"
+      oninput="if(value>10)value=10;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    写作与学风:<input
-      type="number"
-      name="ScoreWandL"
-      class="ScoreWandL"
-      value="0"
-      oninput="if(value>10)value=10;if(value<0)value=0"
-    /><br />
+    写作与学风:<input type="number" name="ScoreWandL" class="ScoreWandL" value="0"
+      oninput="if(value>10)value=10;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    成果与创新性:<input
-      type="number"
-      name="AchievementInnovation"
-      class="AchievementInnovation"
-      value="0"
-      oninput="if(value>30)value=30;if(value<0)value=0"
-    /><br />
+    成果与创新性:<input type="number" name="AchievementInnovation" class="AchievementInnovation" value="0"
+      oninput="if(value>30)value=30;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    理论分析:<input
-      type="number"
-      name="TheoryAnalysis"
-      value="0"
-      class="TheoryAnalysis"
-      oninput="if(value>20)value=20;if(value<0)value=0"
-    /><br />
+    理论分析:<input type="number" name="TheoryAnalysis" value="0" class="TheoryAnalysis"
+      oninput="if(value>20)value=20;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    实验或实验环节:<input
-      type="number"
-      name="Practice"
-      value="0"
-      class="Practice"
-      oninput="if(value>20)value=20;if(value<0)value=0"
-    /><br />
+    实验或实验环节:<input type="number" name="Practice" value="0" class="Practice"
+      oninput="if(value>20)value=20;if(value<0)value=0" /><br />
   </div>
   <div class="field">
-    总得分11111111:&emsp;<output
-      value="0"
-      name="TotalScore"
-      class="TotalScore"
-      for="ScoreTopic ScoreSurvey ScoreWandL AchievementInnovation TheoryAnalysis Practice"
-    ></output
-    ><br />
+    总得分11111111:&emsp;<output value="0" name="TotalScore" class="TotalScore"
+      for="ScoreTopic ScoreSurvey ScoreWandL AchievementInnovation TheoryAnalysis Practice"></output><br />
   </div>
   <div class="field">
-    寄出时间:<input
-      type="datetime"
-      name="DateSend"
-      class="DateSend"
-      pattern="\\d{4}-\d{\1-\12}-\d{\1-\31}?"
-      oninvalid="setCustomValidity('日期格式错误，应为yyyy.MM.dd')"
-    /><br />
+    寄出时间:<input type="datetime" name="DateSend" class="DateSend" pattern="\\d{4}-\d{\1-\12}-\d{\1-\31}?"
+      oninvalid="setCustomValidity('日期格式错误，应为yyyy.MM.dd')" /><br />
   </div>
   <div class="field">
-    返回日期:<input
-      type="datetime"
-      name="ReturnDate"
-      class="ReturnDate"
-      pattern="\\d{4}-\d{\1-\12}-\d{\1-\31}?"
-      oninvalid="setCustomValidity('日期格式错误，应为yyyy.MM.dd')"
-    /><br />
+    返回日期:<input type="datetime" name="ReturnDate" class="ReturnDate" pattern="\\d{4}-\d{\1-\12}-\d{\1-\31}?"
+      oninvalid="setCustomValidity('日期格式错误，应为yyyy.MM.dd')" /><br />
   </div>
   <div class="field">
-    评语:<textarea
-      name="Comments"
-      class="Comments"
-      rows="8"
-      cols="10"
-      wrap="hard"
-    ></textarea
-    ><br />
+    评语:<textarea name="Comments" class="Comments" rows="8" cols="10" wrap="hard"></textarea><br />
   </div>
   <div class="field"><input type="submit" value="提交" /></div>
 </form>
