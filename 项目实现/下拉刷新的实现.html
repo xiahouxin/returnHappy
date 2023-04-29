@@ -1,73 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./lib/vue-2.6.12.js"></script>
-  </head>
-  <style>
-    .scrollContent {
-      height: 300px;
-      width: 100%;
-      background-color: yellow;
-    }
-    /* 延迟拖动效果 */
-    .transition {
-      transition: all 0.7s;
-    }
-  </style>
-  <body>
-    <div class="name">
-      <!-- 滚动的容器 -->
-      <div
-        class="scrollContent"
-        @touchstart.stop="hanleTouchStart"
-        @touchmove.stop="hanleTouchMove"
-        @touchend.stop="hanleTouchEnd"
-        ref="scrollContentRef"
-        :class="{'transition': isTransition}"
-      ></div>
-    </div>
-    <script>
-      new Vue({
-        el: ".name",
-        data() {
-          return {
-            canScroll: false, //允许滚动事件
-            initPageY: 0, //初始位置
-            moveDistance: 0, //移动距离
-            isTransition: true, //是否延迟恢复
-          };
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./lib/vue-2.6.12.js"></script>
+</head>
+<style>
+  .scrollContent {
+    height: 300px;
+    width: 100%;
+    background-color: yellow;
+  }
+
+  /* 延迟拖动效果 */
+  .transition {
+    transition: all 0.7s;
+  }
+</style>
+
+<body>
+  <div class="name">
+    <!-- 滚动的容器 -->
+    <div class="scrollContent" @touchstart.stop="hanleTouchStart" @touchmove.stop="hanleTouchMove"
+      @touchend.stop="hanleTouchEnd" ref="scrollContentRef" :class="{'transition': isTransition}"></div>
+  </div>
+  <script>
+    new Vue({
+      el: ".name",
+      data() {
+        return {
+          canScroll: false, //允许滚动事件
+          initPageY: 0, //初始位置
+          moveDistance: 0, //移动距离
+          isTransition: true, //是否延迟恢复
+        };
+      },
+      methods: {
+        hanleTouchStart(e) {
+          //允许滚动
+          this.canScroll = true;
+          //拒绝延迟恢复
+          this.isTransition = false;
+          //将点击时的X坐标拿到
+          this.initPageX = e.touches[0].pageY;
+          console.log(e.touches[0].pageY);
         },
-        methods: {
-          hanleTouchStart(e) {
-            //允许滚动
-            this.canScroll = true;
-            //拒绝延迟恢复
-            this.isTransition = false;
-            //将点击时的X坐标拿到
-            this.initPageX = e.touches[0].pageY;
-            console.log(e.touches[0].pageY);
-          },
-          hanleTouchMove(e) {
-            if (this.canScroll) {
-              this.moveDistance = e.touches[0].pageY - this.initPageY;
-              console.log(this.moveDistance);
-              this.$refs.scrollContentRef.style.transform = `translateY(${this.moveDistance}px)`;
-            }
-          },
-          hanleTouchEnd(e) {
-            //取消滚动
-            this.canScroll = false;
-            //允许延迟恢复
-            this.isTransition = true;
-            this.moveDistance = 0;
-            this.$refs.scrollContentRef.style.transform = `translateY(0px)`;
-          },
+        hanleTouchMove(e) {
+          if (this.canScroll) {
+            this.moveDistance = e.touches[0].pageY - this.initPageY;
+            console.log(this.moveDistance);
+            this.$refs.scrollContentRef.style.transform = `translateY(${this.moveDistance}px)`;
+          }
         },
-      });
-    </script>
-  </body>
+        hanleTouchEnd(e) {
+          //取消滚动
+          this.canScroll = false;
+          //允许延迟恢复
+          this.isTransition = true;
+          this.moveDistance = 0;
+          this.$refs.scrollContentRef.style.transform = `translateY(0px)`;
+        },
+      },
+    });
+  </script>
+</body>
+
 </html>
