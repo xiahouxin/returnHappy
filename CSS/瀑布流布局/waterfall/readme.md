@@ -13,7 +13,5 @@
 
 # 实现方式
 1. multi-column
-
 2. grid
-
 3. flexbox

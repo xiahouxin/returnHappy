@@ -8,24 +8,31 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <title>多栏布局</title>
   <style>
-    *{
-      margin: 0;padding: 0;
+    * {
+      margin: 0;
+      padding: 0;
     }
-    .masonry{
+
+    .masonry {
       padding: 10px;
-      column-count: 3;  /* 设置总共多少列 */
-      column-gap: 10px;  /* 设置列间距 */
+      column-count: 3;
+      /* 设置总共多少列 */
+      column-gap: 10px;
+      /* 设置列间距 */
       /* column-width: 200px; */
     }
-    .item{
+
+    .item {
       break-inside: avoid;
       border: 1px solid #999;
       width: 240px;
     }
+
     .item img {
       width: 100%;
     }
-    .item .title{
+
+    .item .title {
       display: block;
       padding: 5px;
     }
