@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <title>ajax使用</title>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+
+
+
+  <!-- <script>
+    let app = document.getElementById('app')
+    // let app = $('#app')
+    // console.log(app);
+
+    $.ajax({
+      url: 'https://autumnfish.cn/search',
+      method: 'GET',
+      data: {
+        keywords: '有何不可'
+      },
+      dataType: 'JSON',
+      success: (res) => {
+        console.log(res);
+        showList(res.result.songs)
+      }
+    })
+
+    function showList(songsList) {
+      // for (let item of songsList) {}
+      let ol = document.createElement('ol')
+      for (let i = 0; i < songsList.length; i++) {
+        // 创建ol
+        let li = document.createElement('li')
+        // li.innerHTML = songsList[i].name + '----' + songsList[i].artists[0].name
+        li.innerHTML = `${songsList[i].name} ---- ${songsList[i].artists[0].name}`
+        ol.appendChild(li)
+      }
+      app.appendChild(ol)
+    }
+  </script> -->
+  <!-- <script>
+    // 创建请求实例对象
+    var myAjax = new XMLHttpRequest()
+    // 设置请求的url，参数，这是准备工作
+    // myAjax.open('get', 'https://autumnfish.cn/search?keywords="断桥残雪"')
+    myAjax.open('post', 'https://www.fastmock.site/mock/515309f6448031c6323c47dea002d91d/xhr/music')
+    myAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded') // post请求一定要设置请求头
+    // 发送请求
+    myAjax.send('keywords="断桥残雪"')
+    myAjax.onreadystatechange = function() {
+      if (myAjax.readyState == 4 && myAjax.status == 200) {
+        console.log(JSON.parse(myAjax.responseText));
+      }
+    }
+  </script> -->
+  <!-- ajax是一种异步通信的方法,从服务端获取数据,达到局部刷新页面的效果。
+    过程：
+      创建XMLHttpRequest对象;
+      调用open方法传入三个参数 请求方式(GET/POST)、url、同步异步(true/false);
+      监听onreadystatechange事件，当readystate等于4时返回responseText;
+      调用send方法传递参数。 -->
+  <script>
+    function request(method, url, data, success) {
+      var ajax = new XMLHttpRequest()
+      if (method.toLowerCase() == 'get') {
+
+        url + (data ? '?' + Object.keys(data).map(key => key + '=' + data[key]).join('&') : ''),
+
+          ajax.open(method, url)
+        ajax.send()
+      } else {
+        // post 请求
+        ajax.open(method, url)
+        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        if (data) {
+          ajax.send(data)
+        } else {
+          ajax.send()
+        }
+      }
+      ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+          success(JSON.parse(ajax.responseText))
+        }
+      }
+    }
+    request('GET', 'https://autumnfish.cn/search', 'keywords="断桥残雪"', success)
+    function success(res) {
+      console.log(res);
+    }
+  </script>
+
+
+
+
+<!-- 最终 -->
+  <script>
+    function ajax(options) {
+      let method = options.method || 'GET', // 不传则默认为GET请求
+        params = options.params, // GET请求携带的参数
+        data = options.data, // POST请求传递的参数
+        url = options.url + (params ? '?' + Object.keys(params).map(key => key + '=' + params[key]).join('&') : ''),
+        async = options.async === false ? false : true,
+        success = options.success,
+        headers = options.headers;
+
+      let xhr;
+      // 1.创建异步对象
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else {
+        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+      //2.绑定监听事件(接收请求)
+      xhr.onreadystatechange = function () {
+        //此方法会被调用4次
+        //最后一次，readyState==4
+        //并且响应状态码为200时，才是我们要的响应结果 xhr.status==200
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          success && success(xhr.responseText);
+        }
+      }
+      //3.打开链接（创建请求
+      xhr.open(method, url, async);
+
+      if (headers) {
+        Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]))
+      }
+      //4.发送请求
+      method === 'GET' ? xhr.send() : xhr.send(data)
+    }
+  </script>
+</body>
+<!-- <script>
+  // 手写
+  function ajax(options){
+    let method=options.method ? options.method : 'GET'
+    let params=options.params
+    let data=options.data
+    let url=options.url + (params ? '?'+Object.keys(params).map(key => key+'='+params[key]).join('&') : '')
+    let isasync=options.async==false ? false : true
+    let success=options.success
+    let xhr=new XMLHttpRequest()
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState==4&&xhr.status==200){
+        success && success(xhr.responseText)
+      }
+    }
+    xhr.open(method,url,async)
+    method=='GET' ? xhr.send() : xhr.send(data)
+  }
+</script> -->
+
+</html>
+
+
+<!-- readyState的五种状态详解：
+0 － （未初始化）还没有调用send()方法
+1 － （载入）已调用send()方法，正在发送请求
+2 － （载入完成）send()方法执行完成，已经接收到全部响应内容
+3 － （交互）正在解析响应内容
+4 － （完成）响应内容解析完成，可以在客户端调用了
+ -->
