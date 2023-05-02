@@ -5,8 +5,8 @@ function removeDuplicate(arr) {
     const newArr = []
   
     arr.forEach(item => {
-      if (!map.has(item)) { // has()用于判断map是否包为item的属性值
-        map.set(item, true) // 使用set()将item设置到map中，并设置其属性值为true
+      if (!map.has(item)) {
+        map.set(item, true) 
         newArr.push(item)
       }
     })
