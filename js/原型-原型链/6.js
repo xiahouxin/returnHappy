@@ -1,1 +1,0 @@
-// 所有的对象最终都会继承自 Object.prototype?
