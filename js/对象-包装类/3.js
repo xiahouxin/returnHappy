@@ -37,15 +37,15 @@
 
 
 // 考点
-// var arr = [1, 2, 3, 4, 5]
-// arr.length = 2
-// console.log(arr); // [1, 2]
+var arr = [1, 2, 3, 4, 5]
+arr.length = 2
+console.log(arr); // [1, 2]
 
-// var str = 'abcd'
-// str.length = 2
+var str = 'abcd'
+str.length = 2
 // new String('abcd').length = 2; delete 
-// console.log(str); // 'abcd'
-// console.log(str.length); // new String('abcd').length
+console.log(str); // 'abcd'
+console.log(str.length); // new String('abcd').length
 
 
 
