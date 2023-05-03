@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function Person() {
+
+    // }
+    // var person = new Person()
+    // console.log(person); // { __proto__:  ... }
+    // console.log(Person.prototype); // { cons: ..., __proto__: ...}
+
+    Grand.prototype.lastName = 'li'
+    function Grand() {
+
+    }
+    var grand = new Grand()
+//---------------------------------------------
+    Father.prototype = grand
+    function Father() {
+      this.name = 'jiajun'
+      this.fortune = {
+        card1: 'visa'
+      }
+      this.num = 100
+    }
+    var father = new Father()
+//---------------------------------------------
+    Son.prototype = father  /// 
+    function Son() {
+      this.hobbit = 'reading'
+    }
+    var son = new Son()
+
+    // console.log(son.hobbit); // reading
+    // console.log(son.name); // jiajun
+    // console.log(son.lastName); // li
+
+    // console.log(son.fortune);
+
+    // son.fortune.card2 = 'master'
+    // console.log(son);
+    // console.log(father);  // 引用值修改
+
+    // son.num = son.num + 1
+    console.log(father.num);
+    console.log(son.num);
+  </script>
+</body>
+</html>
