@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id='friends_table'>
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>名字</td>
+                <td>家乡</td>
+                <td>未来想去的城市</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <ul id="container"></ul>
+    <script>
+        const friends=[
+            {index:0,name:'夏侯欣',hometown:'吉安',city:'厦门'},
+            {index: 1, name: '喻顺武', hometown: '南昌', city: '杭州'}
+
+        ];
+        // 数组的每一项是对象->
+         newfriends=friends.map(function(friend){
+            // console.log(friend)
+            return `
+                <tr>
+                    <td>${friend.index}</td>
+                    <td>${friend.name}</td>
+                    <td>${friend.hometown}</td>
+                    <td>${friend.city}</td>
+                </tr>
+            `
+        })
+        document.getElementById('friends_table').querySelector('tbody').innerHTML=newfriends.join('');
+        console.log(newfriends);
+        // const qiang={
+        //     name:" 刘国强",
+        //     age:18,
+        //     job:'大厂女程序员专属鼓励师',
+        //     city:'重庆',
+        //     blo:'写代码就像吃火锅一样，要爽',
+        // }
+        // const users=['夏侯欣','饶乐','王飞']
+        // let html='';
+        // for(let i=0;i<users.length;i++){
+        //     html+='<li>'+users[i]+'</li>'
+        // }
+        // users.forEach(function(user,index){
+        //     html+='<li>'+user+'</li>'
+        //     // console.log(user,index)
+        // })
+
+        // 数组的每一项从字符串编程 变成html的字符串
+        // join 把数组每一项都拼接到一起，
+        // document.getElementById('container').innerHTML=users.map(function(user,index){
+        //     // console.log(user,index)
+        //     return `<li>${user}</li>`
+        // }).join('')
+        
+
+        // document.getElementById('container').innerHTML=html;
+        // qiang.name+qiang.age+'<div>'+qiang.job+'</div>'+qiang.blo            
+        // =`
+        //     <li>${users[0]}</li>
+        //     <li>${users[1]}</li>
+        //     <li>${users[2]}</li>
+        // `
+</script>
+</body>
+</html>
