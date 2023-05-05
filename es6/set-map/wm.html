@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="wrap">
+    <div id="btn">点完我就删除我</div>
+  </div>
+
+  <script>
+    const wm = new WeakMap()
+    let wrap = document.getElementById('wrap')
+    let btn = document.getElementById('btn')
+
+    // let obj = {
+    //   disabled: document.getElementById('btn')
+    // }
+    wm.set(document.getElementById('btn'), true) // 把btn标记为禁用状态
+
+    btn.addEventListener('click', () => {
+      wrap.removeChild(btn) // weakmap里面存放的针对于btn的状态也会消失
+    })
+  </script>
+</body>
+</html>
