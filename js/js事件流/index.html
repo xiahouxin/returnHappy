@@ -17,7 +17,7 @@
 
     window.addEventListener('click', () => {
       console.log('window');
-    }, false)
+    }, false)   //false是默认冒泡事件，改为true就是捕获事件
 
     app.addEventListener('click', (e) => {
       console.log('app');
