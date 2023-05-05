@@ -80,11 +80,11 @@
 
 
 
-// let s1 = Symbol.for('foo')
-// let s2 = Symbol('foo')
+let s1 = Symbol.for('foo')
+let s2 = Symbol('foo')
 
-// console.log(s1 === s2);
-// console.log(Symbol.keyFor(s2));
+console.log(s1 === s2);
+console.log(Symbol.keyFor(s2));
 
 
 let sss = Symbol(undefined)

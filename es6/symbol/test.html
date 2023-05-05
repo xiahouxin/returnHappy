@@ -11,10 +11,8 @@
 <body>
   <script>
     // Symbol([description])
-
     (function () {
       var root = this
-
       var SymbolPolyfill = function Symbol(description) {
         if (this instanceof SymbolPolyfill) throw new TypeError('Symbol is not a construct')
 
@@ -33,17 +31,14 @@
 
         return symbol
       }
-
       root.SymbolPolyfill = SymbolPolyfill
     })()
 
 
     let a =SymbolPolyfill('123')
-
     // let b = Symbol('123')
     console.log(a);
     // console.log(b);
-
   </script>
 </body>
 
