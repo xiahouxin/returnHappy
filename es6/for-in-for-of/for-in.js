@@ -1,14 +1,3 @@
-// const obj = {
-//   a: 1,
-//   b: 2,
-//   c: 3
-// }
-
-// console.log(Object.keys(obj));
-// for (let key of Object.keys(obj)) {
-//   console.log(key);
-// }
-
 
 // Array.prototype.d = 'd'
 // const arr = ['a', 'b', 'c']

@@ -34,7 +34,7 @@ var iterator = createIterator([1, 2, 3])
 
 
 
-var obj = {
+var obj = {  //对象本身没有Symbol.iterator属性
   value: 1
 }
 obj[Symbol.iterator] = function() {
