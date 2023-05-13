@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body><!DOCTYPE html>
+
+<body>
+  <!DOCTYPE html>
   <html lang="en">
-  
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,33 +19,39 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>网格布局</title>
     <style>
-      *{
-        margin: 0;padding: 0;
+      * {
+        margin: 0;
+        padding: 0;
       }
-      .masonry{
+
+      .masonry {
         padding: 10px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;  /* 设置每一列的宽度 */
+        grid-template-columns: 1fr 1fr 1fr;
+        /* 设置每一列的宽度 */
         /* grid-template-rows: 1fr 2fr 1fr;  设置每一行的高度 */
-        column-gap: 5px; /* 列间距 */
-        grid-auto-rows: 10px;  /* 每一行的高度 */
-
+        column-gap: 5px;
+        /* 列间距 */
+        grid-auto-rows: 10px;
+        /* 每一行的高度 */
       }
-      .item{
+
+      .item {
         /* grid-row-start: 1;
         grid-row-end: span 2; */
-        grid-row-start: auto; /* 上边框所在的水平线 */
+        grid-row-start: auto;
+        /* 上边框所在的水平线 */
       }
     </style>
   </head>
-  
+
   <body>
     <div class="page" id="app">
       <div class="masonry">
         <img class="item" v-for="item in data" :src="item.img" :url="item.img" alt="">
       </div>
     </div>
-  
+
     <script>
       // const data = import('./data.js')
       let app = new Vue({
@@ -210,14 +219,14 @@
     </script>
     <script>
       let imgArr = document.getElementsByTagName('img')
-      
+
       // console.log(width);
       Array.from(imgArr).forEach((img, index) => {
         let src = img.getAttribute('url')
         let image = new Image()
         image.src = src
         let width = img.width
-        image.onload = function() {
+        image.onload = function () {
           let w = image.width
           let h = image.height
           let height = Math.round(h * width / w)
@@ -227,8 +236,9 @@
       });
     </script>
   </body>
-  
+
   </html>
-  
+
 </body>
+
 </html>
