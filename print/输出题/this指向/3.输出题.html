@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      //1.
-   
-            // function foo() {
-            //   console.log(this.a);
-            // }
-            // function doFoo() {
-            //   foo();
-            // }
-            // var obj = {
-            //   a: 1,
-            //   doFoo: doFoo,
-            // };
-            // var a = 2;
-            // obj.doFoo();  //2
-           
 
-      //2.注意箭头函数
-      // var a = 10;
-      // var obj = {
-      //   a: 20,
-      //   say: () => {
-      //     console.log(this.a);
-      //   },
-      // };
-      // obj.say();  //10
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-      // var anotherObj = { a: 30 };
-      // obj.say.apply(anotherObj);   //10
-      
+<body>
+  <script>
+    //1.
 
-      //3.非箭头函数的情况
-      // var a = 10;
-      // var obj = {
-      //   a: 20,
-      //   say() {
-      //     console.log(this.a);
-      //   },
-      // };
-      // obj.say();  //20
-      // var anotherObj = { a: 30 };
-      // obj.say.apply(anotherObj);   //30
-
-    
-      //4.
-      // function a() {
-      //   console.log(this);
-      // }
-      // a.call(null); //window
-      // a.call();   //window
+    // function foo() {
+    //   console.log(this.a);
+    // }
+    // function doFoo() {
+    //   foo();
+    // }
+    // var obj = {
+    //   a: 1,
+    //   doFoo: doFoo,
+    // };
+    // var a = 2;
+    // obj.doFoo();  //2
 
 
-      //5.
-      var obj = {
-        name: "cuggz",
-        fun: function () {
-          console.log(this.name);
-        },
-      };
-      obj.fun(); // cuggz
-      let brr = new obj.fun(); // undefined 
-      console.log(brr)  //fun{}
-    </script>
-  </body>
+    //2.注意箭头函数
+    // var a = 10;
+    // var obj = {
+    //   a: 20,
+    //   say: () => {
+    //     console.log(this.a);
+    //   },
+    // };
+    // obj.say();  //10
+
+    // var anotherObj = { a: 30 };
+    // obj.say.apply(anotherObj);   //10
+
+
+    //3.非箭头函数的情况
+    // var a = 10;
+    // var obj = {
+    //   a: 20,
+    //   say() {
+    //     console.log(this.a);
+    //   },
+    // };
+    // obj.say();  //20
+    // var anotherObj = { a: 30 };
+    // obj.say.apply(anotherObj);   //30
+
+
+    //4.
+    // function a() {
+    //   console.log(this);
+    // }
+    // a.call(null); //window
+    // a.call();   //window
+
+
+    //5.
+    var obj = {
+      name: "cuggz",
+      fun: function () {
+        console.log(this.name);
+      },
+    };
+    obj.fun(); // cuggz
+    let brr = new obj.fun(); // undefined 
+    console.log(brr)  //fun{}
+  </script>
+</body>
+
 </html>
