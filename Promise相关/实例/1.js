@@ -36,15 +36,4 @@ function loop() {
 }
 loop()();
 
-// var checkPowersOfThree = function (n) {
-// 	while (n !== 0) {
-// 		if (n % 4 === 2 || n % 4 === 3) {
-// 			return false
-// 		}
-// 		n = Math.floor(n / 4)
-// 		console.log(n);
-// 	}
-// 	return true
-// }
 
-// console.log(checkPowersOfThree(16))
