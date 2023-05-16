@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+    }
+    .v-scroll{
+      height: 100%;
+      overflow: auto;
+    }
+    .scroll-item{
+      height: 148px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .scroll-item img{
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="v-scroll" id="app" ref="scrollBox" @scroll.passive="doScroll">
+    <div :style="blankStyle" style="height: 100%;">
+      <div class="scroll-item" v-for="item in tempList" :key="item.id">
+        <span>{{item.msg}}</span>
+        <img :src="item.src" alt="">
+      </div>
+    </div>
+  </div>
+<!-- 虚拟滚动，就是根据容器可视区域的列表容积数量，监听用户滑动或滚动事件，动态截取长列表数据中的部分数据渲染到页面上，
+  动态使用空白站位填充容器上下滚动区域内容，模拟实现原生滚动效果   上下空白区使用padding实现-->
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          allList: [], // 所有的数据
+          startIndex: 0,
+          itemHeight: 150,
+          boxHeight: 0
+        }
+      },
+      created() {
+        // 模拟请求数据
+        this.getAllList(30)
+      },
+      mounted() {
+        this.getScrollBoxHeight()
+      },
+      methods: {
+        getAllList(count) {
+          const length = this.allList.length
+          for (let i = 0; i < count; i++) {
+            this.allList.push({
+              id: `列表项${length + i}`,
+              msg: `这是背景${length + i}`,
+              src: './11.jpeg'
+            })
+          }
+        },
+        getScrollBoxHeight() {
+          this.boxHeight = this.$refs.scrollBox.clientHeight
+        },
+        doScroll() {
+          // console.log(123);
+          const index = ~~(this.$refs.scrollBox.scrollTop / this.itemHeight)
+          if (index === this.startIndex) return 
+          this.startIndex = index
+          // 滚到底了
+          if (this.startIndex + this.itemNum > this.allList.length - 1) {
+            this.getAllList(30)
+          }
+        }
+      },
+      computed: {
+        itemNum() { // 页面可以展示多少项
+          return ~~(this.boxHeight / this.itemHeight) + 2
+        },
+        endIndex() {
+          let index = this.startIndex + this.itemNum * 2 // * 2的目的是为了预加载一页数据
+          if (!this.allList[index]) { // 到底了
+            index = this.allList.length - 1
+          }
+          return index
+        },
+        tempList() {
+          // 获取可视区域能展示的数据
+          let startIndex = 0
+          if (this.startIndex <= this.itemNum) {
+            startIndex = 0
+          } else {
+            startIndex = this.startIndex - this.itemNum // 重置截取的开始下标
+          }
+          return this.allList.slice(startIndex, this.endIndex + 1)
+        },
+        blankStyle() {
+          let startIndex = 0
+          if (this.startIndex <= this.itemNum) {
+            startIndex = 0
+          } else {
+            startIndex = this.startIndex - this.itemNum
+          }
+          return {
+            paddingTop: startIndex * this.itemHeight + 'px',
+            paddingBottom: (this.allList.length - this.endIndex - 1) * this.itemHeight + 'px'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
