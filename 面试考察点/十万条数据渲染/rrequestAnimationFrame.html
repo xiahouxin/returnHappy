@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <ul id="container">
 
     </ul>
 
     <script>
-        const total=100000
-        let ul=document.getElementById('container')
-        let once=20
-        let page=total/once
-        let index=0
+        const total = 100000
+        let ul = document.getElementById('container')
+        let once = 20
+        let page = total / once
+        let index = 0
 
-        function loop(curTotal,curIndex){
-            if(curTotal<=0){
+        function loop(curTotal, curIndex) {
+            if (curTotal <= 0) {
                 return false
             }
-            let pageCount=Math.min(curTotal,once)
+            let pageCount = Math.min(curTotal, once)
             window.requestAnimationFrame(() => {
-                let fragment=document.createDocumentFragment()  //创建一个文档片段，并且不会出现在dom树中(相当于虚拟dom结构)
+                let fragment = document.createDocumentFragment()  //创建一个文档片段，并且不会出现在dom树中(相当于虚拟dom结构)
 
-               for(let i=0;i<pageCount;i++){
-                   let li=document.createElement('li')
-                   li.innerHTML=curTotal+i+':'+~~(Math.random()*total)
-                //    ul.appendChild(li)
-                fragment.appendChild(li)  //不会带来页面渲染的
-               } 
-               ul.appendChild(fragment)
-               loop(curTotal-pageCount,curIndex+pageCount)
+                for (let i = 0; i < pageCount; i++) {
+                    let li = document.createElement('li')
+                    li.innerHTML = curTotal + i + ':' + ~~(Math.random() * total)
+                    //    ul.appendChild(li)
+                    fragment.appendChild(li)  //不会带来页面渲染的
+                }
+                ul.appendChild(fragment)
+                loop(curTotal - pageCount, curIndex + pageCount)
             });
         }
 
-        loop(total,index)
+        loop(total, index)
 // 文档碎片的好处
 // 1、之前都是每次创建一个div标签就appendChild一次，但是有了文档碎片可以先把1页的div标签先放进文档碎片中，然后一次性appendChild到container中，这样减少了appendChild的次数，极大提高了性能
 // 2、页面只会渲染文档碎片包裹着的元素，而不会渲染文档碎片
 
-    
+
     </script>
 </body>
+
 </html>
