@@ -9,10 +9,7 @@
 </head>
 
 <body>
-    <ul id="container">
-
-    </ul>
-
+    <ul id="container"></ul>
     <script>
         const total = 100000
         let ul = document.getElementById('container')
@@ -43,8 +40,6 @@
 // 文档碎片的好处
 // 1、之前都是每次创建一个div标签就appendChild一次，但是有了文档碎片可以先把1页的div标签先放进文档碎片中，然后一次性appendChild到container中，这样减少了appendChild的次数，极大提高了性能
 // 2、页面只会渲染文档碎片包裹着的元素，而不会渲染文档碎片
-
-
     </script>
 </body>
 
