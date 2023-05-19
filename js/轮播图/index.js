@@ -47,8 +47,6 @@ function Roll(distance) {
   slideShow.style.left = distance + 'px'
 }
 
-
-
 // 把页面上的所有的图片url存在在一个数组中
 // 当点击有点按钮时，往数组中push一份相同的数据
 // 当前点击左边按钮时，往数组头部一条条插入相同的数据
