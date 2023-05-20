@@ -3,11 +3,11 @@ let rightArrow = document.querySelector('.icon-arrow-right-bold')
 
 let imgNums = document.querySelectorAll('.slide-show li').length
 
-let slideShow = document.querySelector('.slide-show') // ul
+let slideShow = document.querySelector('.slide-show') // 获取ul结构
 let width = 800 // 图片的宽度
 
 let picN = 0 // 当前显示图片的下标
-let cirN = 0 // 当前显示的小圆点的下标
+let cirN = 0 // 当前显示的小圆点的下标  
 let rate = 15  // 切换的速度 px
 let timer = null
 
