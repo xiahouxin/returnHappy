@@ -8,14 +8,14 @@ let width = 800 // 图片的宽度
 
 let picN = 0 // 当前显示图片的下标
 let cirN = 0 // 当前显示的小圆点的下标  
-let rate = 15  // 切换的速度 px
+let rate = 15  // 切换的速度 px   
 let timer = null
 
-leftArrow.onclick = function() {
+leftArrow.onclick = function () {
   move(0)
 }
 
-rightArrow.onclick = function () {
+rightArrow.onclick = function () { 
   // 图片往左移动一张
   move(1)
 }
@@ -30,12 +30,12 @@ function move(i) {
       picN = imgNums - 1
     }
   }
-    // 5
+  // 5
   if (picN > imgNums - 1) {
     picN = 0
   }
   Roll(-picN * width) // ul移动
-  
+
 }
 
 // 自动轮播
