@@ -1,7 +1,4 @@
-/* 
-        实现输出1,2,3
-       
-*/
+// 实现输出1,2,3
 //  方法1
 const timeout = (ms) =>
   new Promise((resolve, reject) => {

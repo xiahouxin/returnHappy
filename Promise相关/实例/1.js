@@ -1,3 +1,4 @@
+// 手写红绿灯
 function red(count) {
   console.log(`${count}-red--${new Date().getSeconds()}`);
 }
