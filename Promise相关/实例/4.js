@@ -31,5 +31,5 @@ async function Process(max = 10) {
 }
 
 Process().then((res) => {
-  console.log(res,'------------');
+  console.log(res,'----------');
 });
