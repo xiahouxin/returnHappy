@@ -1,7 +1,6 @@
 console.log(1+'1')
 
 console.log(+'1')  //Number('1')
-
 console.log(+[])   //Number([])  0
 console.log(+['1'])
 console.log(+['1','2','3'])
