@@ -1,10 +1,10 @@
 var removeDuplicateLetters = function (s) {
   const vis = new Array(26).fill(0);
-  const num={}
+  const num = {}
   for (let i = 0; i < s.length; i++) {
-    if(!num[s.charAt(i)]){
-      num[s.charAt(i)]=1
-    }else{
+    if (!num[s.charAt(i)]) {
+      num[s.charAt(i)] = 1
+    } else {
       num[s.charAt(i)]++;
     }
   }
