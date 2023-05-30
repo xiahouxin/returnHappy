@@ -54,5 +54,5 @@ var findMinHeightTrees = function (n, edges) {
       }
     }
   }
-  return res; /*返回最后一次保存的list*/
+  return res; /*返回最后一次保存的list（很重要）*/
 }
