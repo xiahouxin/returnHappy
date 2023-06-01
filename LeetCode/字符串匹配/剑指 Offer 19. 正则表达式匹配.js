@@ -3,13 +3,13 @@
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
     let m = s.length;
     let n = p.length;
 
     let f = new Array(m + 1);
-    for(let i=0;i<=m;i++){
-        f[i]=new Array(n+1).fill(false)
+    for (let i = 0; i <= m; i++) {
+        f[i] = new Array(n + 1).fill(false)
     }
     f[0][0] = true;
     for (let i = 0; i <= m; ++i) {
@@ -29,7 +29,7 @@ var isMatch = function(s, p) {
     return f[m][n];
 }
 
-function matches(s, p,  i,  j) {
+function matches(s, p, i, j) {
     if (i == 0) {
         return false;
     }
