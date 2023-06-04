@@ -63,7 +63,7 @@ function delay(name){
 
 let handleClick=async (name)=>{
     let res=await queue.excute(delay(name))
-    // console.log(res);
+    console.log(res);
 }
   handleClick('A');
   handleClick('B');
