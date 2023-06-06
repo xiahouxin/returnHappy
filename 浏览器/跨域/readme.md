@@ -58,11 +58,30 @@ http://script.a.com/a.js   主域相同，子域不同，跨域
   - 简单请求
     · 使用get、post、head
     · Content-Type的值仅限于 
-      text/plain  || multipart/form-data  || appplication/x-www-form-urlencoded
+      text/plain  || multipart/form-data  || appplication/x-www-http-urlencoded
+    . 请求中的任意XMLHttpRequestUpload 对象均没有注册任何事件监听器；XMLHttpRequestUpload 对象可以使用 XMLHttpRequest.upload 属性访问
+    . 请求中没有使用 ReadableStream 对象
+
+　　简单请求的部分响应头及解释如下：
+      1.Access-Control-Allow-Origin（必含）- 不可省略，否则请求按失败处理。该项控制数据的可见范围，如果希望数据对任何人都可见，可以填写"*"。
+      2.Access-Control-Allow-Credentials（可选） – 该项标志着请求当中是否包含cookies信息，只有一个可选值：true（必为小写）。如果不包含cookies，请略去该项，而不是填写false。这一项与XmlHttpRequest2对象当中的withCredentials属性应保持一致，即withCredentials为true时该项也为true；withCredentials为false时，省略该项不写。反之则导致请求失败。
+      3.Access-Control-Expose-Headers（可选） – 该项确定XmlHttpRequest2对象当中getResponseHeader()方法所能获得的额外信息。通常情况下，getResponseHeader()方法只能获得如下的信息：
+      Cache-Control
+      Content-Language
+      Content-Type
+      Expires
+      Last-Modified
+      Pragma
+      当你需要访问额外的信息时，就需要在这一项当中填写并以逗号进行分隔
 
   - 复杂请求
-    · 不满足简单请求的条件的就是复杂请求
+    · 不满足简单请求的条件的就是复杂请求------非简单请求即为复杂请求。复杂请求我们也可以称之为在实际进行请求之前，需要发起预检请求的请求。
     · 复杂请求的cors请求，会在正式通信之前，增加一次http查询请求，称为“预检”，预检是用来知道服务端是否允许跨域请求，预检请求发的是options方法
+    复杂请求的部分响应头及解释如下：
+      Access-Control-Allow-Origin（必含） – 和简单请求一样的，必须包含一个域。
+      Access-Control-Allow-Methods（必含） – 这是对预请求当中Access-Control-Request-Method的回复，这一回复将是一个以逗号分隔的列表。尽管客户端或许只请求某一方法，但服务端仍然可以返回所有允许的方法，以便客户端将其缓存。
+      Access-Control-Allow-Headers（当预请求中包含Access-Control-Request-Headers时必须包含） – 这是对预请求当中Access-Control-Request-Headers的回复，和上面一样是以逗号分隔的列表，可以返回所有支持的头部。这里在实际使用中有遇到，所有支持的头部一时可能不能完全写出来，而又不想在这一层做过多的判断，没关系，事实上通过request的header可以直接取到Access-Control-Request-Headers，直接把对应的value设置到Access-Control-Allow-Headers即可。
+      Access-Control-Allow-Credentials（可选） – 和简单请求当中作用相同 Access-Control-Max-Age（可选） – 以秒为单位的缓存时间。预请求的的发送并非免费午餐，允许时应当尽可能缓存。
 
 
 
