@@ -28,6 +28,15 @@ var preorderTraversal = function(root) {
     }
     return res;
 };
+// 递归
+// public static void preOrderRecur(TreeNode head) {
+//     if (head == null) {
+//         return;
+//     }
+//     System.out.print(head.value + " ");
+//     preOrderRecur(head.left);
+//     preOrderRecur(head.right);
+// }
 
 
 //中序遍历
@@ -51,6 +60,16 @@ function inOrderIteration(head) {
 	}
     return res
 }
+// 递归
+// public static void preOrderRecur(TreeNode head) {
+//     if (head == null) {
+//         return;
+//     }
+//     preOrderRecur(head.left);
+//     System.out.print(head.value + " ");
+//     preOrderRecur(head.right);
+// }
+
 
 // 后序遍历
 function postOrderIteration2(head) { 
@@ -61,7 +80,7 @@ function postOrderIteration2(head) {
 	let stack = new Array();
 	stack.push(head);
 	while (!!stack.length) {
-		let peek = stack.peek();
+		let peek = stack.pop();
 		if (peek.left != null && peek.left != cur && peek.right != cur) {
 			stack.push(peek.left);
 		} else if (peek.right != null && peek.right != cur) {
@@ -72,3 +91,12 @@ function postOrderIteration2(head) {
 		}
 	}
 }
+// 递归
+// public static void postOrderRecur(TreeNode head) {
+//     if (head == null) {
+//         return;
+//     }
+//     postOrderRecur(head.left);
+//     postOrderRecur(head.right);
+//     System.out.print(head.value + " ");
+// }

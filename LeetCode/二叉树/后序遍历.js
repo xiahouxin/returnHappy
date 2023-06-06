@@ -1,9 +1,9 @@
+// 递归
 function postorderTraversal(root) {
     let res = new Array();
     postorder(root, res);
     return res;
 }
-
 function postorder(root, res) {
     if (root == null) {
         return;
@@ -13,8 +13,7 @@ function postorder(root, res) {
     res.add(root.val);
 }
 
-
-
+// 迭代
 function method1(root) {
     let ans=new Array();
     let stack=new Array();
@@ -22,7 +21,7 @@ function method1(root) {
     //主要思想：
     //由于在某颗子树访问完成以后，接着就要回溯到其父节点去
     //因此可以用prev来记录访问历史，在回溯到父节点时，可以由此来判断，上一个访问的节点是否为右子树
-    while(root!=null||!stack.isEmpty()){
+    while(root!=null||!stack.length){
         while(root!=null){
             stack.push(root);
             root=root.left;
