@@ -3,6 +3,7 @@
  * @return {number}
  */
 var lengthOfLIS = function(nums) {
+    // 方法一
     //    let len=nums.length
     //     if(len<2){
     //         return len
@@ -27,6 +28,7 @@ var lengthOfLIS = function(nums) {
     //         }
     //     }
     //     return ++end
+    // 方法二
         let len=nums.length
         if(len<2){
             return len
