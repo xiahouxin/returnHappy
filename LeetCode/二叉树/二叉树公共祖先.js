@@ -22,16 +22,16 @@ var lowestCommonAncestor = function (root, p, q) {
 };
 
 // 迭代
-function lowestCommonAncestor( root,  p,  q) {
-    if(p.val > q.val) { // 保证 p.val < q.val
+function lowestCommonAncestor(root, p, q) {
+    if (p.val > q.val) { // 保证 p.val < q.val
         let tmp = p;
         p = q;
         q = tmp;
     }
-    while(root != null) {
-        if(root.val < p.val) // p,q 都在 root 的右子树中
+    while (root != null) {
+        if (root.val < p.val) // p,q 都在 root 的右子树中
             root = root.right; // 遍历至右子节点
-        else if(root.val > q.val) // p,q 都在 root 的左子树中
+        else if (root.val > q.val) // p,q 都在 root 的左子树中
             root = root.left; // 遍历至左子节点
         else break;
     }
@@ -56,14 +56,14 @@ function lowestCommonAncestor( root,  p,  q) {
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function(root, p, q) {
-    if(root == null || root == p || root == q) return root;
+var lowestCommonAncestor = function (root, p, q) {
+    if (root == null || root == p || root == q) return root;
     let left = lowestCommonAncestor(root.left, p, q);
     let right = lowestCommonAncestor(root.right, p, q);
-    if(left == null) return right;
-    if(right == null) return left;
+    if (left == null) return right;
+    if (right == null) return left;
     return root;
-    
+
     // if(root == null || root == p || root == q) return root;
     // let left = lowestCommonAncestor(root.left, p, q);
     // let right = lowestCommonAncestor(root.right, p, q);
