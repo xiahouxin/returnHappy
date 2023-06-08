@@ -4,26 +4,26 @@
  *     this.val = val;
  *     this.next = null;
  * }
- */        
+ */
 //         力扣原型142
 /**
  * @param {ListNode} head
  * @return {ListNode}
  */
-var detectCycle = function(head) {
-    let fast=head,slow=head;
-    while(true){
-        if(fast==null||fast.next==null) return null;
-        fast=fast.next.next;
-        slow=slow.next;
-        if(slow==fast){
+var detectCycle = function (head) {
+    let fast = head, slow = head;
+    while (true) {
+        if (fast == null || fast.next == null) return null;
+        fast = fast.next.next;
+        slow = slow.next;
+        if (slow == fast) {
             break;
         }
     }
-    fast=head;
-    while(fast!=slow){
-        fast=fast.next;
-        slow=slow.next;
+    fast = head;
+    while (fast != slow) {
+        fast = fast.next;
+        slow = slow.next;
     }
     return fast;
 };
