@@ -1,4 +1,4 @@
-var nthSuperUglyNumber = function(n, primes) {
+var nthSuperUglyNumber = function (n, primes) {
     const dp = new Array(n + 1).fill(0);
     const m = primes.length;
     const pointers = new Array(m).fill(0);
